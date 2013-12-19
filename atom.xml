@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Liu.Shatle]]></title>
+  <link href="http://shatle.github.com/atom.xml" rel="self"/>
+  <link href="http://shatle.github.com/"/>
+  <updated>2013-12-19T14:51:04+08:00</updated>
+  <id>http://shatle.github.com/</id>
+  <author>
+    <name><![CDATA[liu.shatle &hearts; gmail.com]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Modified Greyshade theme to my Pages]]></title>
+    <link href="http://shatle.github.com/blog/2013/12/19/modified-greyshade-theme-to-my-pages/"/>
+    <updated>2013-12-19T14:18:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2013/12/19/modified-greyshade-theme-to-my-pages</id>
+    <content type="html"><![CDATA[<p>好久没有写文章了，在这里，更甚。</p>
+
+<p>不知道为不什么，今天突然想起是折腾一下自己的博客。好吧，自从 writing.io 声明关闭之后，站主谈到的<code>我们都是在重复造轮子</code>，确实是。</p>
+
+<p>年初折腾的博客网站，基本只有我一个人。没有任何的访问量，真心没有什么念头。生活的种种，又没有空去打理些什么，可能以后得慢慢回归 pages.github.com 了。</p>
+
+<p><a href="https://github.com/shashankmehta/greyshade">Greyshade</a> 也是修改别人的，在它的基础上，再做了些修改。反正，在我这里，有许多样式都觉得有问题。</p>
+
+<p>修改的部分包括：</p>
+
+<ul>
+<li>.left-col</li>
+<li>article header h1</li>
+<li>.archives article time, tags</li>
+<li>&#8230;</li>
+</ul>
+
+
+<p>发现问题，以后再继续吧。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[小白和尚的故事]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/25/xiao-bai-he-shang-de-gu-shi/"/>
+    <updated>2012-08-25T19:47:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/25/xiao-bai-he-shang-de-gu-shi</id>
+    <content type="html"><![CDATA[<blockquote><p>故事是表达心情、心事的另一美好方式</p></blockquote>
+
+<p>从前，山里有个庙，庙里有个小和尚。名字叫做&#8230;</p>
+
+<p>小白。</p>
+
+<p>他每天的工作就是永远的念经&#8230; &#8230;</p>
+
+<p>突然有一天，老和尚派给了他一个新任务　－－</p>
+
+<p>撞钟。</p>
+
+<p>开始时，他不知道怎么才能让钟声响起。于是，他天天练习&#8230;</p>
+
+<p>练习&#8230;努力&#8230;努力练习&#8230;</p>
+
+<p>终于，春天的某天，他把那顽固的钟给撞响了。</p>
+
+<p>学会了撞钟的小和尚，天天撞钟&#8230;！</p>
+
+<p>老和尚有一天对他说，你这样子会累屎的&#8230;!</p>
+
+<p>但是，他不听，他不听，终于夏天到了，他累出si了&#8230;!</p>
+
+<p>他前去请教老和尚。老和尚说：喜欢一事物，想要长久，就要耐得住原起的欲望，不能频繁地去做。并且，他建议小和尚每周一次。</p>
+
+<p>如老和尚所说，小和尚从此撞钟越来越得心就手　－－　他喜欢上了一周一次。</p>
+
+<p>同时，山下的人，比起每天频繁的钟声，更是喜欢一周一次。</p>
+
+<p>小和尚也喜欢一周一次撞钟了，如来神掌般。</p>
+
+<p>但是，山下的人却有另一看法，？？？</p>
+
+<p>山下的人都认为，小和尚喜欢周鸣&#8230;只是小和尚不明白而已。</p>
+
+<p>其实，小和尚自己明白。小和尚不仅喜欢周鸣，而且习惯了周鸣，周鸣就如他生命生活中的不可或缺的一部分&#8230;</p>
+
+<p>&lt;待续&#8230;></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gemfile's gem reference with Rails app local]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/20/gemfiles-gem-reference-with-rails-app-local/"/>
+    <updated>2012-08-20T15:51:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/20/gemfiles-gem-reference-with-rails-app-local</id>
+    <content type="html"><![CDATA[<h2>Gemfile引用Rails项目中的gem</h2>
+
+<hr />
+
+<h3>需求</h3>
+
+<p>之前写了个gem，但是不好意思让其他人在他们的机器上安装吧，因为是github上的私密的项目啊。需要下载下来，安装，虽然也不难。唉，废话。</p>
+
+<h3>解决</h3>
+
+<p>将我本地的已经安装好的gem，放到整个rails环境中吧。</p>
+
+<p>解压本地gem到rails项目目录。</p>
+
+<pre><code>gem unpack my-gem --target vendor/gems
+</code></pre>
+
+<p>往Gemfile里添加</p>
+
+<pre><code>gem 'my-gem', '0.0.1', :path =&gt; "vendor/gems/my-gem-0.0.1"
+</code></pre>
+
+<p>然后, <code>bundle install</code>确认是否成功。</p>
+
+<p>如果，在Gemfile上的版本号不写，或者写<code>&gt;=0.0.1</code>会出现错误。小白我不懂。
+解压到本地的gem没有specification文件，不能准确识别版本？可能吧。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[a tip order of git commit file]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/20/a-tip-order-of-git-commit-file/"/>
+    <updated>2012-08-20T14:46:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/20/a-tip-order-of-git-commit-file</id>
+    <content type="html"><![CDATA[<hr />
+
+<h2>git commit的顺序小记</h2>
+
+<hr />
+
+<p>我在本地从master分支中新建了一个关于此模块的分支 <code>test_job</code></p>
+
+<pre><code>git checkout -b test_job
+</code></pre>
+
+<p>此命令会自动在本地创建<code>test_job</code>分支，并从本地分支切换到<code>test_job</code>分支的。</p>
+
+<p>然后在此分支上做了许多的工作，当想提交的时候，我想了些。此前并不意识到，可能的与其他代码人员的代码冲突，结果往往另我很伤神。</p>
+
+<p>这次应该多检查一下才行。</p>
+
+<p>首先，查看状态。</p>
+
+<pre><code>git status
+</code></pre>
+
+<p>很不幸，其中有一个文件是我没想修改的。但是不知道什么时候，可能是我的原因或者编辑器的原因，对这个文件创造出了修改。这里称此文件为 <code>app/model/other_job_model.rb</code>。</p>
+
+<p>好吧，虽然说，我是不想改这文件的。但是，刚过周末，会不会是上周的一个小需求需要修改此文件，而这周的我忘却了呢？那先具体看看此文件有哪些改动吧。</p>
+
+<pre><code>git diff HEAD -- app/model/other_job_model.rb
+</code></pre>
+
+<p>此命令会显示文件<code>app/model/other_job_model.rb</code>最后一次提交与当前代码的区别。这里的最后一次提交应该是从<code>master</code>迁出的最后一次提交。</p>
+
+<blockquote><pre><code>   $ git diff test            (1)
+   $ git diff HEAD -- ./test  (2)
+   $ git diff HEAD^ HEAD      (3)
+</code></pre>
+
+<ol>
+<li>Instead of using the tip of the current branch, compare with
+the tip of &#8220;test&#8221; branch.</li>
+<li>Instead of comparing with the tip of &#8220;test&#8221; branch, compare
+with the tip of the current branch, but limit the comparison to
+the file &#8220;test&#8221;.</li>
+<li>Compare the version before the last commit and the last
+commit.</li>
+</ol>
+</blockquote>
+
+<p>看了之后顿时无语，不知道什么时候手贱，对此文件删除了一空白行。而　git 神经紧张地报告了这一修改。好吧，至少我还是不希望这一修改提交的，虽然对他人的代码的运行不会有问题，但是，未知的东西太多了。我小白无知的太多了，别动他人代码为好。</p>
+
+<pre><code>git checkout -- app/model/other_job_model.rb
+</code></pre>
+
+<p>相关语法：</p>
+
+<blockquote><p>git checkout [-p|&#8211;patch] [&lt;tree-ish>] [&#8211;] [&lt;paths>&#8230;]</p></blockquote>
+
+<p>重新查看状态</p>
+
+<pre><code>git status
+</code></pre>
+
+<p>好了，此时的文件应该是我自己要修改的文件了。可以提交了。</p>
+
+<pre><code>git add ./  #如果有删除或者更多非添加操作，可以　git add -A
+git commit -m "test_job ok"
+</code></pre>
+
+<p>好了，此版本不会涉及到他人文件了。现在把此分支提交到远程吧。</p>
+
+<pre><code>git push origin HEAD
+</code></pre>
+
+<p>完成，远程会自动创建<code>test_job</code>这一分支并包含刚才push的代码的。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ubuntu one记事]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/ubuntu-one-ji-shi/"/>
+    <updated>2012-08-17T21:48:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/ubuntu-one-ji-shi</id>
+    <content type="html"><![CDATA[<p>前段时间，我不小心从ubuntu one官网上删除了我自己机器上的，于是其只剩下公司电脑了。</p>
+
+<p>回到宿舍想重新添加时，一直不知道怎么办。</p>
+
+<p>有人说，可以从ubuntu one的客户端点击，出网页，会出现添加此设备的按钮，实际上我的没有。</p>
+
+<p>终于方法到了：</p>
+
+<ul>
+<li>删除本地的ubuntu one 帐号。</li>
+</ul>
+
+
+<p>打开&#8221;密码与密钥&#8221;程序，在&#8221;密码&#8221;中找到 ubuntu one 的行，右键删除。</p>
+
+<ul>
+<li><p>打开终端运行命令。</p>
+
+<pre><code>  u1sdtool -q
+
+  u1sdtool -c
+</code></pre></li>
+</ul>
+
+
+<p>重启同步进程。</p>
+
+<ul>
+<li>打开ubuntu one的客户端，输入帐号，就没问题。</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ps引出的<终端>知识点]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/ps-yin-chu-de-%3Czhong-duan-%3Ezhi-shi-dian/"/>
+    <updated>2012-08-17T21:43:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/ps-yin-chu-de-<zhong-duan->zhi-shi-dian</id>
+    <content type="html"><![CDATA[<p>由于任务可能要涉及到，进程的管理，所以，又稍微看了ps命令，其中的很多标识都不知道它是什么意思。</p>
+
+<p>幸运的是，在查找ps相关信息的时候，我发现了一直未意识到的基础知识：</p>
+
+<p>&lt;终端></p>
+
+<p>于是我把这一相关信息copy下来，以后可能会重温一下。</p>
+
+<blockquote><p>http://forum.ubuntu.org.cn/viewtopic.php?f=50&amp;t=150603</p></blockquote>
+
+<p>终端是一种字符型设备，它有多种类型，通常使用tty来简称各种类型的终端设备。tty是Teletype的缩写。Teletype是最早出现的一种终端 设备，很象电传打字机（或者说就是），是由Teletype公司生产的。在Linux系统的设备特殊文件目录/dev/下，终端特殊设备文件一般有以下 几种：</p>
+
+<p>1.串行端口终端（/dev/ttySn）</p>
+
+<p>串行端口终端（Serial Port Terminal）是使用计算机串行端口连接的终端设备。计算机把每个串行端口都看作是一个字符设备。有段时间这些串行端口设备通常被称为终端设备，因为 那时它的最大用途就是用来连接终端。这些串行端口所对应的设备名称是/dev/tts/0（或/dev/ttyS0）、/dev/tts/1（或 /dev/ttyS1）等，设备号分别是（4,0）、（4,1）等，分别对应于DOS系统下的COM1、COM2等。若要向一个端口发送数据，可以在命令 行上把标准输出重定向到这些特殊文件名上即可。例如，在命令行提示符下键入：echo test > /dev/ttyS1会把单词”test”发送到连接在ttyS1（COM2）端口的设备上。可接串口来实验。</p>
+
+<p>2.伪终端（/dev/pty/）</p>
+
+<p>伪终端（Pseudo Terminal）是成对的逻辑终端设备，例如/dev/ptyp3和/dev/ttyp3（或着在设备文件系统中分别是/dev/pty/m3和 /dev/pty/s3）。它们与实际物理设备并不直接相关。如果一个程序把ttyp3看作是一个串行端口设备，则它对该端口的读/写操作会反映在该逻辑 终端设备对的另一个上面（ttyp3）。而ttyp3则是另一个程序用于读写操作的逻辑设备。这样，两个程序就可以通过这种逻辑设备进行互相交流，而其中 一个使用ttyp3的程序则认为自己正在与一个串行端口进行通信。这很象是逻辑设备对之间的管道操作。对于ttyp3（s3），任何设计成使用一个串行端 口设备的程序都可以使用该逻辑设备。但对于使用ptyp3的程序，则需要专门设计来使用ptyp3 （m3）逻辑设备。</p>
+
+<p>例如，如果某人在网上使用telnet程序连接到你的计算机上，则telnet程序就可能会开始连接到设备ptyp2（m2）上（一个伪终端 端口上）。此时一个getty程序就应该运行在对应的ttyp2（s2）端口上。当telnet从远端获取了一个字符时，该字符就会通过m2、s2传递给 getty程序，而getty程序就会通过s2、m2和telnet程序往网络上返回”login:”字符串信息。这样，登录程序与telnet程序就通 过“伪终端”进行通信。通过使用适当的软件，就可以把两个甚至多个伪终端设备连接到同一个物理串行端口上。</p>
+
+<p>在使用设备文件系统（device filesystem）之前，为了得到大量的伪终端设备特殊文件，使用了比较复杂的文件名命名方式。因为只存在16个ttyp（ttyp0—ttypf） 的设备文件，为了得到更多的逻辑设备对，就使用了象q、r、s等字符来代替p。例如，ttys8和ptys8就是一个伪终端设备对。不过这种命名方式目前 仍然在RedHat等Linux系统中使用着。 但Linux系统上的Unix98并不使用上述方法，而使用了”pty master”方式，例如/dev/ptm3。它的对应端则会被自动地创建成/dev/pts/3。这样就可以在需要时提供一个pty伪终端。目录 /dev/pts是一个类型为devpts的文件系统，并且可以在被加载文件系统列表中看到。虽然“文件”/dev/pts/3看上去是设备文件系统中的 一项，但其实它完全是一种不同的文件系统。</p>
+
+<p>即TELNET &#8211;TTYP3（S3：slave）&#8211;TTYP3（M3：master）&#8211;GETTY</p>
+
+<p>实验：1、在X下打开一个orN个N终端窗口
+2、#ls /dev pt*
+3、关闭这个X下的终端窗口，再次运行；比较两次输出信息就明白了。
+在RHEL4环境下：输出为 /dev/ptmx /dev/pts/1 存在一（master）对多（slave）的情况</p>
+
+<p>3.控制终端（/dev/tty）</p>
+
+<p>如果当前进程有控制终端（Controlling Terminal）的话，那么/dev/tty就是当前进程的控制终端的设备特殊文件。可以使用命令”ps –ax”来查看进程与哪个控制终端相连。对于你登录的shell，/dev/tty就是你使用的终端，设备号是（5,0）。使用命令”tty”可以查看它 具体对应哪个实际终端设备。/dev/tty有些类似于到实际所使用终端设备的一个联接。</p>
+
+<p>4.控制台终端（/dev/ttyn, /dev/console）</p>
+
+<p>在Linux系统中，计算机显示器通常被称为控制台终端（Console）。它仿真了类型为Linux的一种终端（TERM=Linux）， 并且有一些设备特殊文件与之相关联：tty0、tty1、tty2等。当你在控制台上登录时，使用的是tty1。使用Alt+[F1—F6]组合键时，我 们就可以切换到tty2、tty3等上面去。tty1 –tty6等称为虚拟终端，而tty0则是当前所使用虚拟终端的一个别名，系统所产生的信息会发送到该终端上。因此不管当前正在使用哪个虚拟终端，系统信 息都会发送到控制台终端上。你可以登录到不同的虚拟终端上去，因而可以让系统同时有几个不同的会话期存在。只有系统或超级用户root可以向/dev /tty0进行写操作 即下例：</p>
+
+<pre><code>#tty（查看当前TTY）
+/dev/tty1
+＃echo "test tty0" &gt; /dev/tty0
+test tty0
+</code></pre>
+
+<p>5.其它类型</p>
+
+<p>Linux系统中还针对很多不同的字符设备存在有很多其它种类的终端设备特殊文件。例如针对ISDN设备的/dev/ttyIn终端设备等。这里不再赘述。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[rails lib 文件]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/rails-lib-wen-jian/"/>
+    <updated>2012-08-17T21:42:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/rails-lib-wen-jian</id>
+    <content type="html"><![CDATA[<p>今天在rails项目中的<code>rails_dir/lib</code>文件夹新建了个文件，当类库使用。</p>
+
+<p>如：my_jobs.rb，内容如下:</p>
+
+<pre><code>module Jobs
+  def self.hello
+    "hello"
+  end
+end
+</code></pre>
+
+<p>但是，当我用</p>
+
+<pre><code>rails c
+</code></pre>
+
+<p>并不能正常加载，不是说rails项目的lib中的文件会自动加载吗？问了旁边的齐洋，哦，要模块名与文件名要同名(符合rails规则)，才能自动加载。</p>
+
+<p>唉，之前都是习惯同名，现在不同名却能发现这一问题。多coding，才能发现问题啊。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[warning: variable  is no longer effective]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/warning-variable-is-no-longer-effective/"/>
+    <updated>2012-08-17T21:40:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/warning-variable-is-no-longer-effective</id>
+    <content type="html"><![CDATA[<pre><code>gems/soap4r-1.5.8/lib/xsd/charset.rb:13: warning: variable $KCODE is no longer effective
+</code></pre>
+
+<p>在stackoverflow上找到了解决这一问题的方法：</p>
+
+<pre><code>http://stackoverflow.com/questions/5754965/ruby-soap4r-wsdl2ruby-rb-errors
+</code></pre>
+
+<p>即，修改文件：gems/soap4r-1.5.8/lib/xsd/xmlparser.rb的第66行，</p>
+
+<pre><code>c.downcase == name
+</code></pre>
+
+<p>为</p>
+
+<pre><code>c.to_s.downcase == name
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[关于linux权限]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/guan-yu-linux-quan-xian/"/>
+    <updated>2012-08-17T21:37:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/guan-yu-linux-quan-xian</id>
+    <content type="html"><![CDATA[<p>最近在linux权限上遇到了一个问题：</p>
+
+<p>一个用户位于一个组中，这个组对某个文件夹拥有权限，此用户想通过组获取文件夹的权限。这对于URP模型应该是比较符合逻辑的。</p>
+
+<p>但实际上我并没有此权限。</p>
+
+<p>过程：</p>
+
+<p>有一用户test1，想获取/var/lib/mysql文件夹的所有权限。显然/var/lib/mysql通常用户是mysql，组是mysql。</p>
+
+<p>通过赋予组权限，如得到/var/lib/mysql的信息：</p>
+
+<pre><code>drwxrwx---  5 mysql         mysql         4096 2012-08-04 08:27 mysql
+</code></pre>
+
+<p>用户与组都拥有所有权限。</p>
+
+<p>test1刚开始不属于mysql组内的，加入组</p>
+
+<pre><code>sudo usermod -G mysql test1
+</code></pre>
+
+<p>查看test1的信息</p>
+
+<pre><code>id test1
+uid=1000(test1) gid=1000(test1) 组=1000(test1),125(mysql)
+</code></pre>
+
+<p>显示test1属于mysql的组了吧，但是实际上并没有进入/var/lib/mysql的权限，纠结。试了多次，没成功，没办法，只有直接点了。</p>
+
+<pre><code>sudo chmod -R 777 /var/lib/mysql
+</code></pre>
+
+<p>即所有人都有完全的权限，终于可以进入此文件夹。但是，我刚开始的想法逻辑应该没错吧。</p>
+
+<p>有空要继续看看为什么会有此问题。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[mysql 修改密码]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/mysql-xiu-gai-mi-ma/"/>
+    <updated>2012-08-17T21:33:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/mysql-xiu-gai-mi-ma</id>
+    <content type="html"><![CDATA[<p>一直用mongodb，今天突然想起用mysql，居然不知道怎么用了。</p>
+
+<p>修改密码，居然多了一个方法（之前我是不知道的）。</p>
+
+<p>直接使用/etc/mysql/debian.cnf文件中<code>client</code>节提供的用户名和密码。</p>
+
+<pre><code>sudo vi /etc/mysql/debian.cnf
+</code></pre>
+
+<p>可看到用户名和密码, 命令行输入：</p>
+
+<pre><code>mysql -udebian-sys-maint -p
+</code></pre>
+
+<p>输入文件中的密码（复制＋粘贴）。</p>
+
+<p>然后，选择数据库：</p>
+
+<pre><code>use mysql
+</code></pre>
+
+<p>更新root的密码</p>
+
+<pre><code>UPDATE user SET Password=PASSWORD('newpassword') where USER='root';
+quit
+</code></pre>
+
+<p>重启 mysql</p>
+
+<pre><code>sudo service mysql restart
+</code></pre>
+
+<p>即可用root用户登录。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Disk Identifier]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/disk-identifier/"/>
+    <updated>2012-08-17T21:32:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/disk-identifier</id>
+    <content type="html"><![CDATA[<blockquote><p>http://www.linuxquestions.org/questions/linux-general-1/what-is-disk-identifier-740408/</p></blockquote>
+
+<p>This is a somewhat confusing area of computers because people don&#8217;t use consistent terminology. So first I&#8217;m going to explain some terms.</p>
+
+<p>A Disk Identifier (or Disk Signature) applies to an entire hard disk drive (not a single partition). A Disk Identifier/Disk Signature is a 4-byte (longword) number that is randomly generated when the Master Boot Record/Partition Table is first created and stored. The Disk Identifier is stored at byte offset 1B8 (hex) through 1BB (hex) in the MBR disk sector. Windows Vista uses the Disk Signature to locate boot devices so changing it can prevent Vista from booting. So far as I know Grub and Linux don&#8217;t use the Disk Identifier.</p>
+
+<p>A UUID (Universally Unique Identifier) or GUID (Globally Unique Identifier) is a 128-bit number. UUIDs are used to identify many different things including some filesystem partitions. Where the UUID is stored for a filesystem depends on the filesystem. Linux ext2/ext3 and Windows NTFS identify filesystems by UUID. UUIDs are generated randomly using either the current time or a random number generator. The UUID is generated and stored when the filesystem is formatted and then does not usually change.</p>
+
+<p>When you copy a partition or disk as raw binary data (for example, with &#8220;dd&#8221;) the Disk Identifier or UUID is also copied. That can result in two disks or two partitions with the same identifier. There are utilities to change the UUID to a new (random) number. There are also utilities to change the Disk Identifier in the Master Boot Record.</p>
+
+<p>The advantage to a UUID is that no matter where you move a filesystem, an operating system can find that particular filesystem. For filesystems that have no UUID the Disk Identifier can at least be used to locate the disk drive.</p>
+
+<p>Windows identifies all filesystems using UUIDs so UUIDs are kept in the registry if a filesystem does not have a UUID in the partition. Windows uses the Disk Signature and other information to match the registry entry for a partition and find the UUID.</p>
+
+<p>Linux can use device names for partitions when UUIDs are not available.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[redis in rails]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/redis-in-rails/"/>
+    <updated>2012-08-17T21:27:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/redis-in-rails</id>
+    <content type="html"><![CDATA[<blockquote><p>http://www.360doc.com/content/12/0401/17/597197_200001717.shtml</p></blockquote>
+
+<p>当初在设计这个项目的架构时，就准备引入nosql作为主要组成部分。一是从网站的预期流量上，单台mysql要撑起来还真有点费劲，mysql的扩展方案 又不是很优雅方便。二是当前凡是有点活力的场所，张口闭口都是nosql，现在搞个项目要是还在跟sql语句死抠较劲，你都不好意思跟人家打招呼。所以经 过一番论证和可行性分析，最终我们选择了redis和mongodb来各负其责。这次先简单说说redis。</p>
+
+<p>1、选择理由</p>
+
+<p>喜欢一个人是没有理由的，但选择一个组件，却一定是要有理由的。这关系到日（名词）后有没有扩展空间，在项目中好不好用，大家写起代码来会不会暗地里大骂当初那个选型的人。</p>
+
+<p>redis 是一款内存型的key-value数据库，它允许把所有的数据都保留在内存里，保证了数据存取的速度。又有持久化和日志机制，保证了断电时数据的完整性。 redis支持hash、list、(sorted) set等数据类型，作为绝大多数的应用来说已经足够。而且redis的更新非常快，开发者们都很敬业努力，这也是选择一个开源组件的很重要的一个方面。</p>
+
+<p>因为这个系列不是专门讲解redis开发的，所以更详细的使用特性和开发手册，请微移莲步至官方网站。</p>
+
+<p>2、适用场景</p>
+
+<p>项目中使用redis的场景主要有以下几处：</p>
+
+<p>2.1 rails默认缓存。凡是rails需要使用缓存的地方，比如页面片段缓存等，都会用到指定的默认缓存系统。这个配置起来很简单，只需要一行代码即可，而且也不必关心rails具体在redis上是怎么实现的，自有redis_store来完成这一切。</p>
+
+<pre><code>config.cache_store = :redis_store, $config.redis[:server]
+</code></pre>
+
+<p>2.2 自定义缓存。主要是以对象缓存的形式，保存在开发中认为有必要进行快速存取的数据。自定义缓存需要自己写一个类，通过redis store调用redis client的命令，来实现数据的存取。比如首页上需要调用的某些资讯数据，就不再每次都从mysql中获取，而是由后台任务定时从mysql中读取或在内容更新时读取并保存至redis缓存中。</p>
+
+<p>其中要注意一点，redis保存的value值，只接受字符串格式，所以如果要通过自定义缓存保存非字符串型的数据，就需要使用Marshal进行序列化和反序列化。</p>
+
+<p>2.3 任务队列。执行异步和定时任务的resque和resque-scheduler组件，使用redis作为任务队列服务器。同样，按照resque的配置说明，一行代码即可搞定。</p>
+
+<pre><code>Resque.redis = Redis.new($config.redis[:server])
+</code></pre>
+
+<p>3、扩展redis缓存</p>
+
+<p>redis_store 只是按照ActiveSupport::Cache的规范实现了诸如read、write、increment、decrement、delete等通用 的存取接口，而作为redis一大亮点的hash、set等数据结构则在默认的规范中没有用武之地。而且在项目中，很有可能会有存取hash类型缓存的需 求。</p>
+
+<p>作为金融资讯网站，当天的股票行情信息是非常重要的，访问率非常高，而且要求访问速度很快，如果每次访问都要去oracle实时查询，则无法满足速度的要求。因此，当天所有的股票行情数据，我们从oracle中取出之后，都要保存redis的高速缓存中。</p>
+
+<p>国 内的股票一共有2000多支，每支股票的行情数据要按照不低于每分钟一次的频率进行实时刷新。如果每支股票的数据都存为一个key-value键值对，那 么在进行每分钟更新时，要同时取出2000个键值对，反序列化，对每支股票依次插入最新的行情数据，再依次序列化保存。经过实际测试，循环2000次序列 化和反序列化所用时间极长，想在1分钟内完成这个任务是不可能的。</p>
+
+<p>因此这就是一个典型的hash类型缓存存取的需求。我们把这2000 支股票数据作为一个hash来进行保存，key是:stocks，field就是每支股票的代码，这样就不需要循环2000次存取数据，而只需一个 redis命令就能完成所有2000多支股票数据的保存和读取，满足了在一分钟内实时刷新行情数据的要求。而且如果要读取某一支股票的数据，也只需指定 key和field，就可迅速取出数据。</p>
+
+<p>实现方法是扩展redis_store的RedisStore::Cache::Store类。具体代码就很简单了，这也显示出了redis的功能强大和ruby编程的便利。</p>
+
+<pre><code>def hwrite(key, hash)
+  @data.hmset(key, *hash.map{|k, v| [k, Marshal.dump(v)]}.flatten(1))
+end
+
+def hread(key, field = nil)
+  field.nil? ? Hash[*@data.hgetall(key).map{|k, v| [k, Marshal.load(v)]}.flatten(1)] :
+               Marshal.load(@data.hget(key, field))   
+rescue TypeError
+end
+</code></pre>
+
+<p>其中@data是Redis::Factory创建的一个Redis::Store实例，负责调用redis client执行redis命令。</p>
+
+<p>同样，如果在项目中需要list和set等数据类型的缓存，也可按此思路一并处理。</p>
+
+<p>4、redis高可用</p>
+
+<p>因为redis不仅作为缓存使用，而且也是resque执行异步和定时任务的消息队列，因此对于可用性的要求就比较高，一旦挂掉，所有后台任务就会全部停止，严重影响网站的功能和体验。</p>
+
+<p>但是redis原生的cluster解决方案迟迟不出，去年看redis官网的时候，说是直到今年5月份才可能会有rc放出，所以没办法，只能自己做一个山寨的高可用方案勉强支撑一段时间。</p>
+
+<p>PS：今年5月份的时候我再看，却又拖到“不早于夏末”了。原来不只是XXX说话不算数的。</p>
+
+<p>redis双机高可用的基础，是redis的主备复制机制。指定主备角色，是用slaveof命令。</p>
+
+<p>指定本机为master</p>
+
+<pre><code>slaveof NO ONE
+</code></pre>
+
+<p>指定本机为192.168.1.10的slave</p>
+
+<pre><code>slaveof 192.168.1.10 6379
+</code></pre>
+
+<p>本来一开始我也想如同mysql的master-master机制那样，分别在配置文件中指定本机为对方的slave，不过后来发现这个方法行不通。如果配置文件中都设置slaveof x.x.x.x，那么这两个redis启动之后不提供服务，客户端无法连接，类似于服务死锁的状态。</p>
+
+<p>经过多次实验发现，如果两个服务按照master-slave的方式启动，然后给master发送slaveof命令，指定其为另一个的slave，则此时双方都为slave，数据可以进行双向同步。基于这个原理，设计了一个redis双机互备的机制。</p>
+
+<p>在自定义的配置文件中，做如下配置：</p>
+
+<pre><code>redis:
+  server: redis://192.168.1.1:6379
+  cluster:
+    master: redis://192.168.1.10:6379   
+    slave: redis://192.168.1.20:6379
+</code></pre>
+
+<p>192.168.1.1是keepalived的virtual ip，应用程序只使用这个ip地址来存取redis。</p>
+
+<p>其核心的实现方式如下：</p>
+
+<p>4.1 两台redis服务器，配合keepalived。初始状态，是在master（192.168.1.10）上绑定keepalived的virtual ip 192.168.1.1。
+4.2 启动一个监控脚本，每秒钟对两个redis服务进行一次扫描。
+4.3 如果两台redis处于正常master-slave状态，则不进行操作。
+4.4 如果master挂掉，监控脚本对在线的slave（192.168.1.20）发送slaveof NO ONE命令，设置其为临时的主机temp-master，同时由于原来的master服务器挂掉，virtual ip 192.168.1.1自动转移至temp-master，不影响应用程序对redis的存取。此时应用程序新产生的数据都保存到temp- master（192.168.1.20）上。
+4.5 脚本监测到原来的master（192.168.1.10）在挂掉后重新启动加入集群，则向master发送slaveof 192.168.1.20 6379命令，设置其为temp-slave，从temp-master（192.168.1.20）复制在自己挂掉期间丢失的数据。同时virtual ip自动跳回temp-slave（192.168.1.10）向应用程序提供服务。
+4.6 延时30秒钟，确保数据复制完毕，对调temp-master和temp-slave的角色，恢复默认的master-slave体系。</p>
+
+<p>我知道延时30秒钟确保数据复制完毕这种方式很不好，但我确实在redis的info命令响应中没有找到指示复制完毕的字段。如果有消息能够明确指出数据复制完毕的状态会更好。</p>
+
+<p>这样，两台redis服务器中的任何一台挂掉，都会由另一台继续提供服务，不会对网站形成可察觉的影响，也不会丢失数据。</p>
+
+<p>5、redis配置</p>
+
+<p>redis的配置也比较灵活强大，使得redis的使用也方便了不少。</p>
+
+<p>5.1 持久化频率。配置save a b，指定在a秒内如果有b次key的改变，就执行硬盘持久化。此频率根据服务器状态进行设定，最好不要太过频繁。</p>
+
+<p>5.2 内存限制。使用maxmemory，限制最大使用内存，如数据超出这个大小，则按照LRU把最不常用的移出redis。这个特性对于使用内存有限的VPS时比较适合，免得内存超出之后造成宕机或天量收费。</p>
+
+<p>5.3 虚拟内存。设置vm-enabled，可指定redis能够使用的最大物理内存，当存储数据大于此内存值时，按照LRU算法把最不常使用的value移出到硬盘的虚拟内存文件中。不过所有的key都是保存在内存中的，这个不可设置。</p>
+
+<p>5.4 二进制日志。当 然，redis可以设置5.1所述的save参数，但如果存盘动作太密集，则会占用很多的资源，速度一慢也就失去了内存数据库的主要优点。为此redis 设计了日志机制。通过设置appendonly，可以开启日志选项，每一个发送到redis执行的命令，都会被立刻追加到硬盘的日志文件中，如果 redis意外宕机，则在重新启动的时候，redis会读取日志里的内容，恢复内存中尚未持久化的数据。</p>
+
+<p>不过因为appendonly 是所有数据的累积，所以文件大小增长非常快，在我们的项目中，差不多每一个小时就会增长6个G。虽然appendonly是另开进程操作的，但文件太大也 会影响效率，更何况还有塞满硬盘的危险。为此我们使用定时任务，每半个小时向redis发送bgrewriteaof命令，使redis按照当前数据快照 重写日志，重写后的日志大小与内存数据大小在同一个数量级上.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[haml 知识点]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/haml-zhi-shi-dian/"/>
+    <updated>2012-08-17T21:25:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/haml-zhi-shi-dian</id>
+    <content type="html"><![CDATA[<blockquote><p>http://haml.info/docs/yardoc/file.HAML_REFERENCE.html#ruby_module</p></blockquote>
+
+<p>孙波2012-07-30 16:51:43</p>
+
+<p>  找到方法了，初始化得时候有个参数是忽略所有的ruby代码，suppress_eval默认是false，把他设置成true</p>
+
+<pre><code>Haml::Engine.new("= User.last.name", :suppress_eval =&gt; true).render
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ruby ObjectSpace]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/ruby-objectspace/"/>
+    <updated>2012-08-17T21:15:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/ruby-objectspace</id>
+    <content type="html"><![CDATA[<blockquote><p>Programming Ruby</p></blockquote>
+
+<p>RUBY支持获取即时对象，此功能可以通过<code>ObjectSpace</code>来实现。</p>
+
+<p>例如，循环列出类型是Float的所有对象。</p>
+
+<pre><code>b = 65.3
+ObjectSpace.each_object(Float){|x| p x}
+</code></pre>
+
+<p>结果</p>
+
+<pre><code>2.718281828459045
+3.141592653589793
+NaN
+Infinity
+2.220446049250313e-16
+1.7976931348623157e+308
+2.2250738585072014e-308
+65.3
+=&gt; 8
+</code></pre>
+
+<p>前面7个是由于Float类引入了其他模块，而模块定义了一些常量，就是这些了。第8个是本人赋值的变量。</p>
+
+<p>NaN是不合法值，如：</p>
+
+<pre><code>a = 0.0/0.0
+=&gt; NaN
+</code></pre>
+
+<p>但是，ObjectSpace获取即时对象，对Fixnum, Symbol, true, false, nil来说是不可行的。如：</p>
+
+<pre><code>c=23
+ObjectSpace.each_object(Fixnum){|x| p x}
+</code></pre>
+
+<p>结果为</p>
+
+<pre><code>=&gt; 0
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[word2007段前段后设置]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/word2007-duan-qian-duan-hou-she-zhi/"/>
+    <updated>2012-08-17T21:13:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/word2007-duan-qian-duan-hou-she-zhi</id>
+    <content type="html"><![CDATA[<p>微软官网上Paragraph中有：</p>
+
+<blockquote><p>Public property SpaceAfter Returns or sets the amount of spacing (in points) after the specified paragraph or text column.</p>
+
+<p>Public property SpaceAfterAuto Determines if Microsoft Word automatically sets the amount of spacing after the specified paragraphs.</p>
+
+<p>Public property SpaceBefore Returns or sets the spacing (in points) before the specified paragraphs.</p>
+
+<p>Public property SpaceBeforeAuto Determines if Microsoft Word automatically sets the amount of spacing before the specified paragraphs.</p></blockquote>
+
+<p>实际设置时，直接设置SpaceAfter能成功，但设置SpaceBefore却不成功。搜了一下，没有相关的问题。</p>
+
+<p>仔细看看了API，Paragraph有属性Format， 即ParagraphFormat接口。其中有属性：</p>
+
+<blockquote><p>Public property SpaceAfter Returns or sets the amount of spacing (in points) after the specified paragraph. (Inherited from _ParagraphFormat.)</p>
+
+<p>Public property SpaceAfterAuto True if Microsoft Word automatically sets the amount of spacing after the specified paragraphs. (Inherited from _ParagraphFormat.)</p>
+
+<p>Public property SpaceBefore Returns or sets the spacing (in points) before the specified paragraphs. (Inherited from _ParagraphFormat.)</p>
+
+<p>Public property SpaceBeforeAuto True if Microsoft Word automatically sets the amount of spacing before the specified paragraphs. (Inherited from _ParagraphFormat.)</p></blockquote>
+
+<p>描述基本是一样的。</p>
+
+<p>运行代码：</p>
+
+<pre><code>paraInstance.Format.SpaceBefore = 24;
+</code></pre>
+
+<p>但运行此代码就能设置成功。 汗死 ms!!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[gem install fileutils in ubuntu 12.04]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/gem-install-fileutils-in-ubuntu-12-dot-04/"/>
+    <updated>2012-08-17T21:08:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/gem-install-fileutils-in-ubuntu-12-dot-04</id>
+    <content type="html"><![CDATA[<p>gem在ubuntu 10.04中安装FileUtils时，只要简单地</p>
+
+<pre><code>gem install fileutils
+</code></pre>
+
+<p>但是，换到12.04环境中，安装的过程会有错误：Can&#8217;t install RMagick 2.13.1.
+gg了一下，需要安装相应的库。</p>
+
+<p>简单的只安装libmagick-dev 包是不行的，会出现错误：Can&#8217;t install RMagick 2.13.1. Can&#8217;t find MagickWand.h.
+于是，在ubuntu12.04中，需要</p>
+
+<pre><code>sudo apt-get install libmagick++-dev
+</code></pre>
+
+<p>然后，重新运行</p>
+
+<pre><code>gem install fileutils
+</code></pre>
+
+<p>即可。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ruby const_set]]></title>
+    <link href="http://shatle.github.com/blog/2012/08/17/ruby-const-set/"/>
+    <updated>2012-08-17T19:41:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2012/08/17/ruby-const-set</id>
+    <content type="html"><![CDATA[<h2>常量</h2>
+
+<p>Ruby会对大写字母开头的变量自动识别为常量</p>
+
+<pre><code>module MyModule
+    SERVER = "192.168.0.123"
+end
+</code></pre>
+
+<p>可直接通过“模块名／类名::常量名”访问常量值</p>
+
+<pre><code>puts MyModule::SERVER # 
+</code></pre>
+
+<p>常量可以重新赋值</p>
+
+<pre><code>MyModule::SERVER = "192.168.0.122"
+</code></pre>
+
+<p>会有警告：warning: already initialized constant SERVER , 值会改变的。</p>
+
+<p>不过，我比较常用的方法是const_set(地球人小心反射)</p>
+
+<ul>
+<li><p>在方法的内部</p>
+
+<pre><code>  def set_something
+      const_set("SERVER", "192.168.0.122")
+  end
+</code></pre></li>
+<li><p>在模块或者类的外部</p>
+
+<pre><code>  MyModule.const_set(:SERVER, "192.168.0.122")  #呵，可以用symbol
+</code></pre>
+
+<p>当然，可以转变一下思路，在方法的内部使用symbol,有必要吗？对某人来说，这个可以有</p>
+
+<pre><code>  self.class.const_set(:SERVER,"192.168.0.122")
+</code></pre></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

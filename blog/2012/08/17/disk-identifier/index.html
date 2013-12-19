@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Disk Identifier - Liu.Shatle</title>
+  <meta name="author" content="liu.shatle &hearts; gmail.com">
+
+  
+  <meta name="description" content="http://www.linuxquestions.org/questions/linux-general-1/what-is-disk-identifier-740408/ This is a somewhat confusing area of computers because people &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://shatle.github.com/blog/2012/08/17/disk-identifier/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Liu.Shatle" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+
+<body>
+  <div class="container">
+    <div class="left-col">
+      <div class="intrude-less">
+        <header id="header" class="inner">
+          <hgroup>
+  <div id="logo">
+    
+    <img class="avatar img-circle" height="220" src="https://0.gravatar.com/avatar/0fa4799fa713ef369a5ce6707e28e86f.png?s=440" width="220">
+    
+    <div class="clear"></div>
+  </div>
+  <h1><a href="/">Liu.Shatle</a></h1>
+  
+    <h2>沉淀生活点滴，回首忘却了的记忆</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+
+          <ul id="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+
+        </header>
+      </div>
+    </div>  
+    <div class="mid-col">
+      
+        
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/LShatle">LShatle</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('LShatle', 4, false);
+	})(jQuery);
+</script>
+
+      
+      <div class="mid-col-container">
+        <div id="content" class="inner"><article class="post" >
+  <header>
+    
+      
+        <h1 class="entry-title">Disk Identifier</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-17T21:32:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><blockquote><p>http://www.linuxquestions.org/questions/linux-general-1/what-is-disk-identifier-740408/</p></blockquote>
+
+<p>This is a somewhat confusing area of computers because people don&#8217;t use consistent terminology. So first I&#8217;m going to explain some terms.</p>
+
+<p>A Disk Identifier (or Disk Signature) applies to an entire hard disk drive (not a single partition). A Disk Identifier/Disk Signature is a 4-byte (longword) number that is randomly generated when the Master Boot Record/Partition Table is first created and stored. The Disk Identifier is stored at byte offset 1B8 (hex) through 1BB (hex) in the MBR disk sector. Windows Vista uses the Disk Signature to locate boot devices so changing it can prevent Vista from booting. So far as I know Grub and Linux don&#8217;t use the Disk Identifier.</p>
+
+<p>A UUID (Universally Unique Identifier) or GUID (Globally Unique Identifier) is a 128-bit number. UUIDs are used to identify many different things including some filesystem partitions. Where the UUID is stored for a filesystem depends on the filesystem. Linux ext2/ext3 and Windows NTFS identify filesystems by UUID. UUIDs are generated randomly using either the current time or a random number generator. The UUID is generated and stored when the filesystem is formatted and then does not usually change.</p>
+
+<p>When you copy a partition or disk as raw binary data (for example, with &#8220;dd&#8221;) the Disk Identifier or UUID is also copied. That can result in two disks or two partitions with the same identifier. There are utilities to change the UUID to a new (random) number. There are also utilities to change the Disk Identifier in the Master Boot Record.</p>
+
+<p>The advantage to a UUID is that no matter where you move a filesystem, an operating system can find that particular filesystem. For filesystems that have no UUID the Disk Identifier can at least be used to locate the disk drive.</p>
+
+<p>Windows identifies all filesystems using UUIDs so UUIDs are kept in the registry if a filesystem does not have a UUID in the partition. Windows uses the Disk Signature and other information to match the registry entry for a partition and find the UUID.</p>
+
+<p>Linux can use device names for partitions when UUIDs are not available.</p>
+</div>
+
+</article>
+
+	<div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://shatle.github.com/blog/2012/08/17/disk-identifier/" data-via="LShatle" data-counturl="http://shatle.github.com/blog/2012/08/17/disk-identifier/" >Tweet</a>
+  
+  
+  
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+      </div>
+      <footer id="footer" class="inner"><p>
+  Copyright &copy; 2013 - liu.shatle &hearts; gmail.com -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'shatleblog';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://shatle.github.com/blog/2012/08/17/disk-identifier/';
+        var disqus_url = 'http://shatle.github.com/blog/2012/08/17/disk-identifier/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+    </div>
+  </div>
+</body>
+</html>
