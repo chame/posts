@@ -9,7 +9,13 @@
   <meta name="author" content="liu.shatle &hearts; gmail.com">
 
   
-  <meta name="description" content="好久没有写文章了，在这里，更甚。 不知道为不什么，今天突然想起是折腾一下自己的博客。好吧，自从 writing.io 声明关闭之后，站主谈到的我们都是在重复造轮子，确实是。 年初折腾的博客网站，基本只有我一个人。没有任何的访问量，真心没有什么念头。生活的种种，又没有空去打理些什么， &hellip;">
+  <meta name="description" content="相信大家开始接触ng-repeat时，很容易就明白了以下代码的作用： 1
+2
+%li(ng-repeat=&quot;item in items&quot;) %span 那么，当ng-repeat和ng-model结合起来呢： 1
+2
+3
+4
+%li(ng-repeat=&quot;item &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,6 +97,79 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/12/21/ngrepeat-with-ngmodel-in-radiobtn/">ngRepeat With ngModel in RadioBtn</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-21T23:05:00+08:00" pubdate data-updated="true">Dec 21<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>相信大家开始接触<code>ng-repeat</code>时，很容易就明白了以下代码的作用：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='haml'><span class='line'><span class="nt">%li</span>(<span class="na">ng-repeat=</span><span class="s">&quot;item in items&quot;</span>)
+</span><span class='line'>  <span class="nt">%span</span> 
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>那么，当<code>ng-repeat</code>和<code>ng-model</code>结合起来呢：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='haml'><span class='line'><span class="nt">%li</span>(<span class="na">ng-repeat=</span><span class="s">&quot;item in items&quot;</span>)
+</span><span class='line'>  <span class="nt">%input</span>(<span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;select_item&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span>)
+</span><span class='line'>
+</span><span class='line'><span class="nt">%input</span>(<span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;select_item&quot;</span>)
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>从代码上看，多个RadioBtn分在同一组，然后显示选择项的值。但是，这在实际操作中是不行的。</p>
+
+<blockquote><p>The ngRepeat directive instantiates a template once per item from a collection. <strong>Each template instance gets its own scope</strong>, where the given loop variable is set to the current collection item, and $index is set to the item index or key.</p></blockquote>
+
+<p><code>ng-repeat</code>会为每个实例产生自己的作用域。也就是说，<code>ng-model="select_item"</code>与<code>items</code>不是同一作用层级的；而相似的，<code>ng-model="select_item"</code>和<code>value="select_item"</code>是同一作用层级的。所以，<code>value="select_item"</code>并不能正常访问<code>ng-model="select_item"</code>中的变化值，需要将<code>ng-model</code>提升层级，</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='haml'><span class='line'><span class="nt">%li</span>(<span class="na">ng-repeat=</span><span class="s">&quot;item in items&quot;</span>)
+</span><span class='line'>  <span class="nt">%input</span>(<span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">ng-model=</span><span class="s">&quot;$parent.select_item&quot;</span> <span class="na">name=</span><span class="s">&quot;item&quot;</span> <span class="na">value=</span><span class="s">&quot;&quot;</span>)
+</span><span class='line'>
+</span><span class='line'><span class="nt">%input</span>(<span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">value=</span><span class="s">&quot;select_item&quot;</span>)
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
         <h1 class="entry-title"><a href="/blog/2013/12/19/modified-greyshade-theme-to-my-pages/">Modified Greyshade Theme to My Pages</a></h1>
       
     
@@ -145,7 +224,7 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/25/xiao-bai-he-shang-de-gu-shi/">小白和尚的故事</a></h1>
+        <h1 class="entry-title"><a href="/blog/2013/11/26/two-pictures-with-Inkscape/">使用了 Inkscape 画了两张图</a></h1>
       
     
     
@@ -162,52 +241,53 @@
   
 
 
-<time datetime="2012-08-25T19:47:00+08:00" pubdate data-updated="true">Aug 25<span>th</span>, 2012</time>
+<time datetime="2013-11-26T14:18:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><blockquote><p>故事是表达心情、心事的另一美好方式</p></blockquote>
+  <div class="entry-content"><h2>使用了 Inkscape 画了两张图</h2>
 
-<p>从前，山里有个庙，庙里有个小和尚。名字叫做&#8230;</p>
+<p>作为编程的人员来说，视觉设计很可能会很勉强，我也不例外。更多时候，我的视觉设计基本是利用前端框架，呵呵。
+我试图改变，于是，贴上两张图&#8230;</p>
 
-<p>小白。</p>
+<p>不得不承认，虽然自己常常以文艺青年自居，但是，更多时候，只能算是普通青年与2B青年之间。</p>
 
-<p>他每天的工作就是永远的念经&#8230; &#8230;</p>
+<p>角落的吉他，已经忘却了声音，却尘法饱满；柜上的四五本图书，痕迹永远的是前面几页；甚至，还有《秘密》《秘密2》&#8230;</p>
 
-<p>突然有一天，老和尚派给了他一个新任务　－－</p>
+<p>想拾起些什么，却又不能回答丢了些什么&#8230;</p>
 
-<p>撞钟。</p>
+<p>打住！</p>
 
-<p>开始时，他不知道怎么才能让钟声响起。于是，他天天练习&#8230;</p>
+<p>说说，页面设计。AI，相信是大多数设计师使用的工具吧，然而，在 Ubuntu 中，我使用了 Inkscape。</p>
 
-<p>练习&#8230;努力&#8230;努力练习&#8230;</p>
+<p>自己凭空，想象、猜想、臆测&#8230;</p>
 
-<p>终于，春天的某天，他把那顽固的钟给撞响了。</p>
+<p>结果，得出的视觉效果，连自己都不能容忍。不得不从 <a href="http://dribbble.com">Dribbble</a> 上找图，自己在 Inkscape 上画。</p>
 
-<p>学会了撞钟的小和尚，天天撞钟&#8230;！</p>
+<p>所以，我说，我画了「两张图」，而不是设计！</p>
 
-<p>老和尚有一天对他说，你这样子会累屎的&#8230;!</p>
+<h3>Blog Design</h3>
 
-<p>但是，他不听，他不听，终于夏天到了，他累出si了&#8230;!</p>
+<p>参照别人的成果，画出来的。</p>
 
-<p>他前去请教老和尚。老和尚说：喜欢一事物，想要长久，就要耐得住原起的欲望，不能频繁地去做。并且，他建议小和尚每周一次。</p>
+<p><img src="/images/photo/blog-1.png" alt="blog-1.png" /></p>
 
-<p>如老和尚所说，小和尚从此撞钟越来越得心就手　－－　他喜欢上了一周一次。</p>
+<h3>CMS</h3>
 
-<p>同时，山下的人，比起每天频繁的钟声，更是喜欢一周一次。</p>
+<p>参照别人的成果，画出来的。</p>
 
-<p>小和尚也喜欢一周一次撞钟了，如来神掌般。</p>
+<p><img src="/images/photo/cms-1.png" alt="cms-1.png" /></p>
 
-<p>但是，山下的人却有另一看法，？？？</p>
+<p>工具，永远要记住的是其性质，它就是用来用的。由于很长时间，没有用画图相关的工具了，手不由得变得生疏。圈圈点点的东西，很多。</p>
 
-<p>山下的人都认为，小和尚喜欢周鸣&#8230;只是小和尚不明白而已。</p>
+<p>记得之前选修课时，学过很多的工具，当时学得还蛮好的。但是，岁月怎么看都是刀，一片片刮下的，永远都只会沉下深海。</p>
 
-<p>其实，小和尚自己明白。小和尚不仅喜欢周鸣，而且习惯了周鸣，周鸣就如他生命生活中的不可或缺的一部分&#8230;</p>
+<p>画这两张图时，我更多的体会是：要先有内容。没有内容，感觉就是一张大白纸，很难凭空去设计些什么，就如刚开始的样子。或者说，自己至少在心里，确定设计的目的是什么，有什么作用。不能简单的以为，自己可以设计好框架，任何人可以往里面加内容，如何如何的&#8230;</p>
 
-<p>&lt;待续&#8230;></p>
+<p>希望自己更文艺些，不想太被快节奏的物质生活所左右，或者&#8230;</p>
 </div>
   
   
@@ -219,7 +299,7 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/20/gemfiles-gem-reference-with-rails-app-local/">Gemfile&#8217;s Gem Reference With Rails App Local</a></h1>
+        <h1 class="entry-title"><a href="/blog/2013/11/26/CSS-Position/">CSS Position</a></h1>
       
     
     
@@ -236,39 +316,67 @@
   
 
 
-<time datetime="2012-08-20T15:51:00+08:00" pubdate data-updated="true">Aug 20<span>th</span>, 2012</time>
+<time datetime="2013-11-26T14:18:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h2>Gemfile引用Rails项目中的gem</h2>
+  <div class="entry-content"><p>最近，遇到一个问题，不同的浏览器之间对定位展现出来的页面效果不一样，甚至同是chrome，但是window和*nix的都不一样。</p>
+
+<p>比如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="err">#</span> <span class="nt">css</span> <span class="nt">file</span>
+</span><span class='line'>
+</span><span class='line'><span class="nc">.cont</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">position</span><span class="o">:</span> <span class="k">relative</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">top</span><span class="o">:</span> <span class="m">-6px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这是简单的相对定位代码，绝对定位就更不好说了，可能出现的问题就更多了。绝对定位更多使用在如左边的导航操作区。对于不同浏览器之间的效果差别，我在这就不好贴出来了。</p>
+
+<p>通过我的试验，感觉定位基本都可以用另外的方法替代。可简单由<code>float</code>、<code>margin</code>、<code>padding</code>构成：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.cont</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">float</span><span class="o">:</span> <span class="k">right</span><span class="o">:</span>
+</span><span class='line'>  <span class="k">padding-right</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有时会不得不用到 margin，不过在我记忆中，好像不同的浏览器中初始值也不一样，此知识点的来源是找不到了。我潜意识里能不用则不用。</p>
+
+<p>听同事说，定位比一般样式要耗资源，是不是呢！！</p>
 
 <hr />
 
-<h3>需求</h3>
+<p>最近看到一个不同浏览器内核不同的代码，如<code>webkit</code>:</p>
 
-<p>之前写了个gem，但是不好意思让其他人在他们的机器上安装吧，因为是github上的私密的项目啊。需要下载下来，安装，虽然也不难。唉，废话。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">-webkit-min-device-pixel-ratio</span><span class="nd">:0</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="o">...</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<h3>解决</h3>
 
-<p>将我本地的已经安装好的gem，放到整个rails环境中吧。</p>
-
-<p>解压本地gem到rails项目目录。</p>
-
-<pre><code>gem unpack my-gem --target vendor/gems
-</code></pre>
-
-<p>往Gemfile里添加</p>
-
-<pre><code>gem 'my-gem', '0.0.1', :path =&gt; "vendor/gems/my-gem-0.0.1"
-</code></pre>
-
-<p>然后, <code>bundle install</code>确认是否成功。</p>
-
-<p>如果，在Gemfile上的版本号不写，或者写<code>&gt;=0.0.1</code>会出现错误。小白我不懂。
-解压到本地的gem没有specification文件，不能准确识别版本？可能吧。</p>
+<p>更多不同浏览器差别及相应的语法技巧，可以转到 <a href="http://browserhacks.com">browserhacks</a>，对于调试浏览器的兼容性的开发者来说是十分有益的。可恶的浏览器之争，一家独大，对于开发者来说也不见得是坏事。</p>
 </div>
   
   
@@ -280,7 +388,7 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/20/a-tip-order-of-git-commit-file/">A Tip Order of Git Commit File</a></h1>
+        <h1 class="entry-title"><a href="/blog/2013/10/23/tx-te-gong-1/">Tx特工第一季</a></h1>
       
     
     
@@ -297,480 +405,515 @@
   
 
 
-<time datetime="2012-08-20T14:46:00+08:00" pubdate data-updated="true">Aug 20<span>th</span>, 2012</time>
+<time datetime="2013-10-23T14:18:00+08:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><hr />
+  <div class="entry-content"><p>从腾讯招聘微信看到的：http://codestar.alloyteam.com/1/1 ，有些意思。我的过程无厘头。</p>
 
-<h2>git commit的顺序小记</h2>
+<h3>1/1</h3>
+
+<p>这一关的输入名字与邮箱。想当然地，很简单了。但是，输入相关项后，居然还是不能进入。这也是特工任务－－走后门？tx提倡走后门吗，节操何在？</p>
+
+<p>抓包？Firefox 用户的优势体现出来了，firebug或者自带控制台的也行。请求信息中，会返回错误，其中提示没有timestamps。</p>
+
+<p>好吧，从命令行中，敲入并执行：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$('input[name=timestamps]').value=(new Date()).valueOf()</span></code></pre></td></tr></table></div></figure>
+
+
+<p>OK，点击「打开」吧。</p>
+
+<h3>1/2</h3>
+
+<p>这个画企鹅的事，我从来没有想过。关于这自栩的事，好吧，不说了。</p>
+
+<p>但是题目让我迷惑了很久！</p>
+
+<p>第一个题目还简单：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>border-radius: 50%;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第二个我实在想了好久，真心的。一直找到 <code>border-corner-shape</code>这一属性，其中还看到http://lea.verou.me/2013/03/border-corner-shape-is-in-danger-and-you-can-help/ 。但结果还是不出来，可能是firefox不支持，或者是tx的js测试响应程序不支持？</p>
+
+<p>没办法，只能看看页面了。幸运的是，页面的注释中有，</p>
+
+<blockquote><p>可参考 http://www.alloyteam.com/2012/10/css3-draw-qq-logo/</p></blockquote>
+
+<p>看了里面的方法，思想开朗了。之前的css运用中，一直没有注意啊，border 还有这一模型：</p>
+
+<p><img src="http://octoper.com/photo/050faa5d8d3076e62f079f9c2dcd4dbb/border.png" alt="border.png" /></p>
+
+<p>代码：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>  border-top: 20px solid transparent;
+</span><span class='line'>  border-bottom: 20px solid transparent;
+</span><span class='line'>  transform-origin: top right;
+</span><span class='line'>  transform: rotate(-60deg);
+</span><span class='line'>  -webkit-transform: rotate(-60deg);
+</span><span class='line'>
+</span><span class='line'>  ...</span></code></pre></td></tr></table></div></figure>
+
+
+<p>http://jsfiddle.net/shatle/fgLLS/</p>
+
+<h3>1/3</h3>
+
+<p>这个吧，实在没心思和时间看API文档，直接收藏了牛人的代码，然后「开战」&#8230;</p>
+
+<h3>1/4</h3>
+
+<p><strong>第一灯</strong>，数组克隆：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>var clone = function(arr){
+</span><span class='line'>return arr.slice(0);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>二灯</strong>，字符串去前后空格trim：</p>
+
+<p>开始想偷工减料的：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>str.ltrim().rtrim();</span></code></pre></td></tr></table></div></figure>
+
+
+<p>但是不行啊，后来是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');</span></code></pre></td></tr></table></div></figure>
+
+
+<p>不过，这个应该也行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>str.replace(/^\s+|\s+$/g,'');</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>三灯</strong>，NodeList to Array：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Array.prototype.slice.call(list);</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>1/5</h2>
+
+<p>找出数字和为最大的路径。其实我是看感觉点的，基本的思路是：首先，从底往上，找出每行的最大数的方位；从上往下，预估两三行吧，差不多的，然后就过了。</p>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/10/12/new-Date-Syntax/">New Date Syntax</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-12T14:18:00+08:00" pubdate data-updated="true">Oct 12<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/photo/date2013.jpg" alt="date2013.jpg" /></p>
+
+<p>前两天笔试时，多选 Date 的语法，我经常用的有</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>new Date(1999,10,10);
+</span><span class='line'>new Date("1999-10-10");</span></code></pre></td></tr></table></div></figure>
+
+
+<p>其它的不敢多选，回来查看了 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date ，基本语法有：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>new Date();
+</span><span class='line'>new Date(value);
+</span><span class='line'>new Date(dateString);
+</span><span class='line'>new Date(year, month, day [, hour, minute, second, millisecond]);</span></code></pre></td></tr></table></div></figure>
+
+
+<p>好吧，这个<code>dateString</code>很恼人啊，幸好链接了 http://tools.ietf.org/html/rfc2822#page-14 。</p>
+
+<p>下面形象地列出些<code>dateString</code>实例：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>new Date("1999-10-10");
+</span><span class='line'>new Date("1999/10/10");
+</span><span class='line'>new Date("Oct* 10, 1999");
+</span><span class='line'>new Date("October 10, 1999");
+</span><span class='line'>new Date("1999-Oct-10");
+</span><span class='line'>new Date("1999/Oct/10");</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>#Date</code> <code>#js</code></p>
 
 <hr />
+</div>
+  
+  
 
-<p>我在本地从master分支中新建了一个关于此模块的分支 <code>test_job</code></p>
+</article>
 
-<pre><code>git checkout -b test_job
-</code></pre>
 
-<p>此命令会自动在本地创建<code>test_job</code>分支，并从本地分支切换到<code>test_job</code>分支的。</p>
+    <article class="post">
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/10/10/modify-tags-in-evernote/">Evernote 修改标签</a></h1>
+      
+    
+    
+      <p class="meta">
+        
 
-<p>然后在此分支上做了许多的工作，当想提交的时候，我想了些。此前并不意识到，可能的与其他代码人员的代码冲突，结果往往另我很伤神。</p>
 
-<p>这次应该多检查一下才行。</p>
 
-<p>首先，查看状态。</p>
 
-<pre><code>git status
-</code></pre>
 
-<p>很不幸，其中有一个文件是我没想修改的。但是不知道什么时候，可能是我的原因或者编辑器的原因，对这个文件创造出了修改。这里称此文件为 <code>app/model/other_job_model.rb</code>。</p>
 
-<p>好吧，虽然说，我是不想改这文件的。但是，刚过周末，会不会是上周的一个小需求需要修改此文件，而这周的我忘却了呢？那先具体看看此文件有哪些改动吧。</p>
 
-<pre><code>git diff HEAD -- app/model/other_job_model.rb
-</code></pre>
 
-<p>此命令会显示文件<code>app/model/other_job_model.rb</code>最后一次提交与当前代码的区别。这里的最后一次提交应该是从<code>master</code>迁出的最后一次提交。</p>
+  
 
-<blockquote><pre><code>   $ git diff test            (1)
-   $ git diff HEAD -- ./test  (2)
-   $ git diff HEAD^ HEAD      (3)
-</code></pre>
+
+<time datetime="2013-10-10T14:18:00+08:00" pubdate data-updated="true">Oct 10<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>虽然用了 evernote 快两年了，但最近一年多用的都是印象笔记，没办法网络速度是硬伤。使用期间也没遇到什么问题，可能之前记录东西相对较少吧。</p>
+
+<p>可是，在这段时间，由于找工作的原因，印象笔记的使用程序直线上升，用来记录自己不懂的知识点、错题等等。于是，时不时就会有这样子的操作。</p>
+
+<ul>
+<li>添加标签时 输入字符</li>
+<li>evernote 提示字符</li>
+<li>顺手敲回车</li>
+<li>之前添加的类似标签上去了。</li>
+</ul>
+
+
+<p>功能很好，但是，有时却不是我想要的标签，只是类似而已，但已经上去了。想修改此标签，却怎么点都不行，习惯性的右键，唉，它又不是本地应用。无奈＋手懒，没太多理会，就留在上面了。</p>
+
+<p>最近，这情况出现的次数多了，不能忍受。于是，看了网上的人是怎么做的。好吧，其实也简单 －－ <strong>直接删除</strong>。</p>
+
+<ul>
+<li>鼠标选择要删除的标签</li>
+<li>按下键盘上的 Del(ete) 按钮</li>
+</ul>
+
+
+<p>没有直接修改啊，不过这样也不错，有进步至少。</p>
+
+<hr />
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/10/08/accident-from-tmux/">居然有这命令</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-08T14:18:00+08:00" pubdate data-updated="true">Oct 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>刚刚折腾 tmux ，不小心按错键，导致终端的字体变大了。哪个快捷键啊！</p>
+
+<p>网上搜了一下，居然有这命令：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>放大快捷键：Ctrl shift + 
+</span><span class='line'>缩小快捷键：Ctrl  -</span></code></pre></td></tr></table></div></figure>
+
+
+<p>倒！！！</p>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/09/13/tree-3/">AVL树的删除</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-13T14:18:00+08:00" pubdate data-updated="true">Sep 13<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>之前说到插入，相比插入操作，删除操作要复杂些。但是，也有共同的地方。</p>
+
+<p>删除操作与插入操作的大体思路是相同的，引起不平衡的原因，在于某些节点的平衡因子从1变为2，从-1变为-2。调整时，需要找出离删除节点最近的此类节点，命名A节点，与插入类似。</p>
+
+<p>最近忙，先上图，以后再写文章。</p>
+
+<p><img src="/images/photo/IMG_20130913_210729.jpg" alt="IMG_20130913_210729.jpg" /></p>
+
+<p><img src="/images/photo/IMG_20130913_210739.jpg" alt="IMG_20130913_210739.jpg" /></p>
+
+<p><img src="/images/photo/IMG_20130913_210751.jpg" alt="IMG_20130913_210751.jpg" /></p>
+
+<p><img src="/images/photo/IMG_20130913_210826.jpg" alt="IMG_20130913_210826.jpg" /></p>
+
+<p><img src="/images/photo/IMG_20130913_210836.jpg" alt="IMG_20130913_210836.jpg" /></p>
+
+<p><img src="/images/photo/IMG_20130913_210848.jpg" alt="IMG_20130913_210848.jpg" /></p>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/09/13/tree-2/">二叉搜索树</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-13T14:18:00+08:00" pubdate data-updated="true">Sep 13<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>二叉搜索树有以下特点：</p>
 
 <ol>
-<li>Instead of using the tip of the current branch, compare with
-the tip of &#8220;test&#8221; branch.</li>
-<li>Instead of comparing with the tip of &#8220;test&#8221; branch, compare
-with the tip of the current branch, but limit the comparison to
-the file &#8220;test&#8221;.</li>
-<li>Compare the version before the last commit and the last
-commit.</li>
+<li>每个节点有唯一的搜索关键值；</li>
+<li>任意节点，如果存在着左子节点，那么左子节点的关键值小于此节点的关键值；</li>
+<li>任意节点，如果存在着右子节点，那么右子节点的关键值大于此节点的关键值；</li>
 </ol>
-</blockquote>
-
-<p>看了之后顿时无语，不知道什么时候手贱，对此文件删除了一空白行。而　git 神经紧张地报告了这一修改。好吧，至少我还是不希望这一修改提交的，虽然对他人的代码的运行不会有问题，但是，未知的东西太多了。我小白无知的太多了，别动他人代码为好。</p>
-
-<pre><code>git checkout -- app/model/other_job_model.rb
-</code></pre>
-
-<p>相关语法：</p>
-
-<blockquote><p>git checkout [-p|&#8211;patch] [&lt;tree-ish>] [&#8211;] [&lt;paths>&#8230;]</p></blockquote>
-
-<p>重新查看状态</p>
-
-<pre><code>git status
-</code></pre>
-
-<p>好了，此时的文件应该是我自己要修改的文件了。可以提交了。</p>
-
-<pre><code>git add ./  #如果有删除或者更多非添加操作，可以　git add -A
-git commit -m "test_job ok"
-</code></pre>
-
-<p>好了，此版本不会涉及到他人文件了。现在把此分支提交到远程吧。</p>
-
-<pre><code>git push origin HEAD
-</code></pre>
-
-<p>完成，远程会自动创建<code>test_job</code>这一分支并包含刚才push的代码的。</p>
-</div>
-  
-  
-
-</article>
 
 
-    <article class="post">
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/17/ubuntu-one-ji-shi/">Ubuntu One记事</a></h1>
-      
-    
-    
-      <p class="meta">
-        
+<p>另外，搜索树可以带索引，在每个节点中加入字段，其值为其左子树的节点数目加1。此方式的索引，可以明确地知道节点在此树中的从小到大的排序位置。</p>
+
+<pre>
+    10
+   ／ \
+   6 16
+  / \ \
+  3 8 18
+
+关键值:索引字段值
+10:4,6:2,16:1,3:1,8:1,18:1
+</pre>
 
 
+<p>对于此索引字段，我一直未找到其有什么作用。查找搜索，加了此索引字段就不用比较？也要比较，比较次数也不见得少。删除／插入也要查找，那么加入此索引字段作肾吗？唯一的我能看到的作用是查看当前节点的状态，给出稍微详细的信息，而不是查找。个人觉得还不如完全二叉树，直接线性表索引显然更好些。</p>
+
+<h4>查找</h4>
+
+<p>由于二叉搜索树的性质，是查找元素时，只要比较搜索的关键值与当前节点的关键值，小于继续搜索左子树，大于则搜索右子树，即可。时间复杂度为O(h)，由于树不一定是完全二叉树，可能存在着左、右斜二叉树，所以不一定保证O(logn)。</p>
+
+<h4>插入</h4>
+
+<p>按查找的思路，可以把要插入的元素的关键值看作查找此关键值。当从根节点一直往下找，如果真有此关键值，证明要插入的元素关键值重复，不能进行插入；如果查找不到，必然会最终碰到左子节点或者右子节点为空，只要将查找路径上的这个为空的左子节点或者右子节点，设置为要插入的新元素即可，成为新的节点。复杂度也是O(h)</p>
+
+<h4>删除</h4>
+
+<p>对于叶子节点，查找成功后，可直接删除，不影响树的结构。对于非叶子节点，需要用此节点的左子树的最大节点代替已删除的节点，或者用此节点的右子树的最小节点代替。这最大节点和最小节点应该都是叶子节点。复杂度为O(h)。</p>
+
+<p>如，</p>
+
+<pre>
+     20
+    /  \
+   10  30
+   /\   | \
+  9 14 24 32
+
+     14
+    /  \
+   10   30
+   /    | \
+  9    24 32
+
+     24
+    / \
+   10 30
+   /\   \
+  9 14   32
+</pre>
 
 
+<p>删除20时，需要将其左子树的14上升到原根节点的位置；或者将其右子树的24上升到原根节点的位置。</p>
 
+<h3>AVL树</h3>
 
+<p>首先，AVL树是一种平衡树。平衡树是指节点数为n且高度为logn级别的树。AVL树是根据提出人的姓名命名的。</p>
 
+<p>AVL树就是任意节点的左右子树的高度绝对差为1。通常会定义其<code>平衡因子＝左子树的高度 - 右子树的高度</code>，平衡因子可能是-1、0、1。</p>
 
-  
+<h4>查找</h4>
 
+<p>过程如二叉搜索树一样，但AVL树的高度是logn，所以可以确定其时间复杂度是O(logn)</p>
 
-<time datetime="2012-08-17T21:48:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
+<h4>插入</h4>
 
+<p>插入的操作可能采用二叉搜索树的插入方法，当不平衡时，再调整节点。</p>
 
-  <div class="entry-content"><p>前段时间，我不小心从ubuntu one官网上删除了我自己机器上的，于是其只剩下公司电脑了。</p>
+<p>首先，插入之前，它应该是AVL树。插入新节点之后，树可能依然是AVL树，也可能不是AVL树。而不能成为AVL树，其原因必然是：树的某些节点的平衡因子从-1变为-2，或者从1变为2。而平衡因子变化的节点，也一定是从新节点到根节点这一路径上的节点。</p>
 
-<p>回到宿舍想重新添加时，一直不知道怎么办。</p>
+<p>在这些新插入的节点到树的根节点这一路径中，可能存在着离新节点最近的原平衡因子为1或者为-1的A节点。从A节点到新节点之间的所有节点的平衡因子原来都应该是0。因为，如果不是0，而是1或者-1，那么A节点就找错了。</p>
 
-<p>有人说，可以从ubuntu one的客户端点击，出网页，会出现添加此设备的按钮，实际上我的没有。</p>
+<p>其次，调整。对于插入操作后不平衡的树，需要调整使得插入后的平衡因子为2或者-2的节点变回为1、0、-1。</p>
 
-<p>终于方法到了：</p>
+<p>基本的操作步骤：</p>
 
-<ul>
-<li>删除本地的ubuntu one 帐号。</li>
-</ul>
-
-
-<p>打开&#8221;密码与密钥&#8221;程序，在&#8221;密码&#8221;中找到 ubuntu one 的行，右键删除。</p>
-
-<ul>
-<li><p>打开终端运行命令。</p>
-
-<pre><code>  u1sdtool -q
-
-  u1sdtool -c
-</code></pre></li>
-</ul>
-
-
-<p>重启同步进程。</p>
+<ol>
+<li><p>在树中搜索新节点的关键值，如果关键值不存在，插入并记录原树中的A节点；如果存在，退出。</p></li>
+<li><p>如果没有所谓的A节点，那么修改新节点到树根节点的平衡因子，从0修改为1或者-1。</p></li>
+<li><p>如果存在A节点，需要分情况：</p>
 
 <ul>
-<li>打开ubuntu one的客户端，输入帐号，就没问题。</li>
+<li>如果新插入的节点在A节点的左子树上，而A节点原平衡因子为-1，那么插入后的树也是平衡的，可直接修改从新节点到A节点上的平衡因子即可；</li>
+<li>如果新插入的节点在A节点的左子树上，而A节点原平衡因子为1，那么A节点的平衡因子会变为2，需要调整；</li>
+<li>如果新插入的节点在A节点的右子树上，而A节点原平衡因子为-1，那么A节点的平衡因为会变为-2，需要调整；</li>
+<li>如果新插入的节点在A节点的右子树上，而A节点原平衡因子为1，那么插入后的树也是平衡的，可直接修改从新节点到A节点上的平衡因子即可；</li>
 </ul>
+</li>
+</ol>
 
-</div>
-  
-  
 
-</article>
+<p>下面对需要调整的3.2和3.3进行进一步的说明。</p>
 
+<h5>3.2</h5>
 
-    <article class="post">
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/17/ps-yin-chu-de-%3Czhong-duan-%3Ezhi-shi-dian/">Ps引出的<终端>知识点</a></h1>
-      
-    
-    
-      <p class="meta">
-        
+<p>新节点在A的左子树上，又可以分两种情况：新节点在左子树的左子树上(LL)，新节点在左子树的右子树上(LR):</p>
 
+<p><img src="http://octoper.com/photo/c69c6523e7b903d1d71bc142abf659e6/IMG_20130913_110349.jpg" alt="IMG_20130913_110349.jpg" /></p>
 
+<p><strong>LL</strong>：对于LL情况，由于A节点的原平衡因子为1，所以必定存在B节点且其平衡因子为0。假设BL的高度为h，则BR和AR的高度应该也为h，以A为根节点的子树高度为h+2。插入后BL高度变为h+1，A节点平衡因子变为2，B节点平衡因子变为1。BL中可能有更多的节点的平衡因子从0变为1，但这里只讨论1个B，因为只有从新插入的节点到树的根节点中的节点有变化。</p>
 
+<p>为了减少各节点平衡因子的变化，就尽量使以A为子树的高度在调整之后仍然为h+1。这里可以将B节点上移，A节点转而当作B节点的右子节点，并将BR当作A节点的左子树。对于调整的整个子树来说，原来的高度是h+2，调整后保持不变，也就不用调整A节点以上的节点的平衡因子了，但需要再次调整A和B的平衡因子。</p>
 
+<p><img src="/images/photo/IMG_20130913_110915.jpg" alt="IMG_20130913_110915.jpg" /></p>
 
+<p><strong>LR</strong>：对于LR情况，BR在插入新节点后，高度为h+1，也就是说，插入后必定存在C节点。而且，CL和CR的高度只可能是h或者h-1，且不能同为h-1。</p>
 
+<p>对于此情况，不能采用LL的方法。因为把BL当作已经下沉的A的左子树，只会引起新的不平衡。</p>
 
+<p>所以，需要把C上移，并替代原来的A节点，而A节点下沉，然后分别将CL和CR作为B和A的右子树和左子树。对于调整的整个子树来说，原来的高度是h+2，调整后保持不变，也就不用调整A节点以上的节点的平衡因子了，但需要再次调整A、B、C的平衡因子。</p>
 
-  
+<h4>3.3</h4>
 
+<p>新节点在A的右子树上，又可以分两种情况：新节点在左子树的左子树上(RL)，新节点在左子树的右子树上(RR):</p>
 
-<time datetime="2012-08-17T21:43:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
+<p><img src="/images/photo/IMG_20130913_214343.jpg" alt="IMG_20130913_214343.jpg" /></p>
 
+<p><img src="/images/photo/IMG_20130913_214334.jpg" alt="IMG_20130913_214334.jpg" /></p>
 
-  <div class="entry-content"><p>由于任务可能要涉及到，进程的管理，所以，又稍微看了ps命令，其中的很多标识都不知道它是什么意思。</p>
-
-<p>幸运的是，在查找ps相关信息的时候，我发现了一直未意识到的基础知识：</p>
-
-<p>&lt;终端></p>
-
-<p>于是我把这一相关信息copy下来，以后可能会重温一下。</p>
-
-<blockquote><p>http://forum.ubuntu.org.cn/viewtopic.php?f=50&amp;t=150603</p></blockquote>
-
-<p>终端是一种字符型设备，它有多种类型，通常使用tty来简称各种类型的终端设备。tty是Teletype的缩写。Teletype是最早出现的一种终端 设备，很象电传打字机（或者说就是），是由Teletype公司生产的。在Linux系统的设备特殊文件目录/dev/下，终端特殊设备文件一般有以下 几种：</p>
-
-<p>1.串行端口终端（/dev/ttySn）</p>
-
-<p>串行端口终端（Serial Port Terminal）是使用计算机串行端口连接的终端设备。计算机把每个串行端口都看作是一个字符设备。有段时间这些串行端口设备通常被称为终端设备，因为 那时它的最大用途就是用来连接终端。这些串行端口所对应的设备名称是/dev/tts/0（或/dev/ttyS0）、/dev/tts/1（或 /dev/ttyS1）等，设备号分别是（4,0）、（4,1）等，分别对应于DOS系统下的COM1、COM2等。若要向一个端口发送数据，可以在命令 行上把标准输出重定向到这些特殊文件名上即可。例如，在命令行提示符下键入：echo test > /dev/ttyS1会把单词”test”发送到连接在ttyS1（COM2）端口的设备上。可接串口来实验。</p>
-
-<p>2.伪终端（/dev/pty/）</p>
-
-<p>伪终端（Pseudo Terminal）是成对的逻辑终端设备，例如/dev/ptyp3和/dev/ttyp3（或着在设备文件系统中分别是/dev/pty/m3和 /dev/pty/s3）。它们与实际物理设备并不直接相关。如果一个程序把ttyp3看作是一个串行端口设备，则它对该端口的读/写操作会反映在该逻辑 终端设备对的另一个上面（ttyp3）。而ttyp3则是另一个程序用于读写操作的逻辑设备。这样，两个程序就可以通过这种逻辑设备进行互相交流，而其中 一个使用ttyp3的程序则认为自己正在与一个串行端口进行通信。这很象是逻辑设备对之间的管道操作。对于ttyp3（s3），任何设计成使用一个串行端 口设备的程序都可以使用该逻辑设备。但对于使用ptyp3的程序，则需要专门设计来使用ptyp3 （m3）逻辑设备。</p>
-
-<p>例如，如果某人在网上使用telnet程序连接到你的计算机上，则telnet程序就可能会开始连接到设备ptyp2（m2）上（一个伪终端 端口上）。此时一个getty程序就应该运行在对应的ttyp2（s2）端口上。当telnet从远端获取了一个字符时，该字符就会通过m2、s2传递给 getty程序，而getty程序就会通过s2、m2和telnet程序往网络上返回”login:”字符串信息。这样，登录程序与telnet程序就通 过“伪终端”进行通信。通过使用适当的软件，就可以把两个甚至多个伪终端设备连接到同一个物理串行端口上。</p>
-
-<p>在使用设备文件系统（device filesystem）之前，为了得到大量的伪终端设备特殊文件，使用了比较复杂的文件名命名方式。因为只存在16个ttyp（ttyp0—ttypf） 的设备文件，为了得到更多的逻辑设备对，就使用了象q、r、s等字符来代替p。例如，ttys8和ptys8就是一个伪终端设备对。不过这种命名方式目前 仍然在RedHat等Linux系统中使用着。 但Linux系统上的Unix98并不使用上述方法，而使用了”pty master”方式，例如/dev/ptm3。它的对应端则会被自动地创建成/dev/pts/3。这样就可以在需要时提供一个pty伪终端。目录 /dev/pts是一个类型为devpts的文件系统，并且可以在被加载文件系统列表中看到。虽然“文件”/dev/pts/3看上去是设备文件系统中的 一项，但其实它完全是一种不同的文件系统。</p>
-
-<p>即TELNET &#8211;TTYP3（S3：slave）&#8211;TTYP3（M3：master）&#8211;GETTY</p>
-
-<p>实验：1、在X下打开一个orN个N终端窗口
-2、#ls /dev pt*
-3、关闭这个X下的终端窗口，再次运行；比较两次输出信息就明白了。
-在RHEL4环境下：输出为 /dev/ptmx /dev/pts/1 存在一（master）对多（slave）的情况</p>
-
-<p>3.控制终端（/dev/tty）</p>
-
-<p>如果当前进程有控制终端（Controlling Terminal）的话，那么/dev/tty就是当前进程的控制终端的设备特殊文件。可以使用命令”ps –ax”来查看进程与哪个控制终端相连。对于你登录的shell，/dev/tty就是你使用的终端，设备号是（5,0）。使用命令”tty”可以查看它 具体对应哪个实际终端设备。/dev/tty有些类似于到实际所使用终端设备的一个联接。</p>
-
-<p>4.控制台终端（/dev/ttyn, /dev/console）</p>
-
-<p>在Linux系统中，计算机显示器通常被称为控制台终端（Console）。它仿真了类型为Linux的一种终端（TERM=Linux）， 并且有一些设备特殊文件与之相关联：tty0、tty1、tty2等。当你在控制台上登录时，使用的是tty1。使用Alt+[F1—F6]组合键时，我 们就可以切换到tty2、tty3等上面去。tty1 –tty6等称为虚拟终端，而tty0则是当前所使用虚拟终端的一个别名，系统所产生的信息会发送到该终端上。因此不管当前正在使用哪个虚拟终端，系统信 息都会发送到控制台终端上。你可以登录到不同的虚拟终端上去，因而可以让系统同时有几个不同的会话期存在。只有系统或超级用户root可以向/dev /tty0进行写操作 即下例：</p>
-
-<pre><code>#tty（查看当前TTY）
-/dev/tty1
-＃echo "test tty0" &gt; /dev/tty0
-test tty0
-</code></pre>
-
-<p>5.其它类型</p>
-
-<p>Linux系统中还针对很多不同的字符设备存在有很多其它种类的终端设备特殊文件。例如针对ISDN设备的/dev/ttyIn终端设备等。这里不再赘述。</p>
-</div>
-  
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/17/rails-lib-wen-jian/">Rails Lib 文件</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-17T21:42:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天在rails项目中的<code>rails_dir/lib</code>文件夹新建了个文件，当类库使用。</p>
-
-<p>如：my_jobs.rb，内容如下:</p>
-
-<pre><code>module Jobs
-  def self.hello
-    "hello"
-  end
-end
-</code></pre>
-
-<p>但是，当我用</p>
-
-<pre><code>rails c
-</code></pre>
-
-<p>并不能正常加载，不是说rails项目的lib中的文件会自动加载吗？问了旁边的齐洋，哦，要模块名与文件名要同名(符合rails规则)，才能自动加载。</p>
-
-<p>唉，之前都是习惯同名，现在不同名却能发现这一问题。多coding，才能发现问题啊。</p>
-</div>
-  
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/17/warning-variable-is-no-longer-effective/">Warning: Variable Is No Longer Effective</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-17T21:40:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>gems/soap4r-1.5.8/lib/xsd/charset.rb:13: warning: variable $KCODE is no longer effective
-</code></pre>
-
-<p>在stackoverflow上找到了解决这一问题的方法：</p>
-
-<pre><code>http://stackoverflow.com/questions/5754965/ruby-soap4r-wsdl2ruby-rb-errors
-</code></pre>
-
-<p>即，修改文件：gems/soap4r-1.5.8/lib/xsd/xmlparser.rb的第66行，</p>
-
-<pre><code>c.downcase == name
-</code></pre>
-
-<p>为</p>
-
-<pre><code>c.to_s.downcase == name
-</code></pre>
-</div>
-  
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/17/guan-yu-linux-quan-xian/">关于linux权限</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-17T21:37:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近在linux权限上遇到了一个问题：</p>
-
-<p>一个用户位于一个组中，这个组对某个文件夹拥有权限，此用户想通过组获取文件夹的权限。这对于URP模型应该是比较符合逻辑的。</p>
-
-<p>但实际上我并没有此权限。</p>
-
-<p>过程：</p>
-
-<p>有一用户test1，想获取/var/lib/mysql文件夹的所有权限。显然/var/lib/mysql通常用户是mysql，组是mysql。</p>
-
-<p>通过赋予组权限，如得到/var/lib/mysql的信息：</p>
-
-<pre><code>drwxrwx---  5 mysql         mysql         4096 2012-08-04 08:27 mysql
-</code></pre>
-
-<p>用户与组都拥有所有权限。</p>
-
-<p>test1刚开始不属于mysql组内的，加入组</p>
-
-<pre><code>sudo usermod -G mysql test1
-</code></pre>
-
-<p>查看test1的信息</p>
-
-<pre><code>id test1
-uid=1000(test1) gid=1000(test1) 组=1000(test1),125(mysql)
-</code></pre>
-
-<p>显示test1属于mysql的组了吧，但是实际上并没有进入/var/lib/mysql的权限，纠结。试了多次，没成功，没办法，只有直接点了。</p>
-
-<pre><code>sudo chmod -R 777 /var/lib/mysql
-</code></pre>
-
-<p>即所有人都有完全的权限，终于可以进入此文件夹。但是，我刚开始的想法逻辑应该没错吧。</p>
-
-<p>有空要继续看看为什么会有此问题。</p>
-</div>
-  
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/17/mysql-xiu-gai-mi-ma/">Mysql 修改密码</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-17T21:33:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一直用mongodb，今天突然想起用mysql，居然不知道怎么用了。</p>
-
-<p>修改密码，居然多了一个方法（之前我是不知道的）。</p>
-
-<p>直接使用/etc/mysql/debian.cnf文件中<code>client</code>节提供的用户名和密码。</p>
-
-<pre><code>sudo vi /etc/mysql/debian.cnf
-</code></pre>
-
-<p>可看到用户名和密码, 命令行输入：</p>
-
-<pre><code>mysql -udebian-sys-maint -p
-</code></pre>
-
-<p>输入文件中的密码（复制＋粘贴）。</p>
-
-<p>然后，选择数据库：</p>
-
-<pre><code>use mysql
-</code></pre>
-
-<p>更新root的密码</p>
-
-<pre><code>UPDATE user SET Password=PASSWORD('newpassword') where USER='root';
-quit
-</code></pre>
-
-<p>重启 mysql</p>
-
-<pre><code>sudo service mysql restart
-</code></pre>
-
-<p>即可用root用户登录。</p>
+<p>RL、RR的调整方法基本与LR、LL一样，只是方向变化了而已，不多叙述。</p>
 </div>
   
   

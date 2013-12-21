@@ -73,8 +73,98 @@
         <lastmod>2013-12-19T13:28:50+08:00</lastmod>
     </url>
     <url>
+        <loc>http://shatle.github.com/blog/2013/04/07/summer-palace/</loc>
+        <lastmod>2013-12-19T21:27:30+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/05/06/cancel-assets-logs/</loc>
+        <lastmod>2013-12-19T21:05:09+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/07/02/Rails-Cache/</loc>
+        <lastmod>2013-12-19T21:07:47+08:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://shatle.github.com/blog/2013/07/16/Use-Carrierwave-to-crop-image-with-MiniMagick/
+        </loc>
+        <lastmod>2013-12-19T21:07:19+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/07/21/sublime-ppa/</loc>
+        <lastmod>2013-12-19T21:08:47+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/08/07/Linux-Commands/</loc>
+        <lastmod>2013-12-19T20:59:48+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/08/11/good-css/</loc>
+        <lastmod>2013-12-19T20:58:46+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/08/14/the-hell-of-browser-hack/</loc>
+        <lastmod>2013-12-19T21:21:41+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/08/19/Ruby-reference-or-value/</loc>
+        <lastmod>2013-12-19T20:54:55+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/09/05/the-feeling-of-university/</loc>
+        <lastmod>2013-12-19T20:52:39+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/09/07/modify-mongodb-setting/</loc>
+        <lastmod>2013-12-19T20:48:03+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/09/09/Cron/</loc>
+        <lastmod>2013-12-19T20:46:43+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/09/11/tree-1/</loc>
+        <lastmod>2013-12-19T20:41:05+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/09/13/tree-2/</loc>
+        <lastmod>2013-12-19T20:43:08+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/09/13/tree-3/</loc>
+        <lastmod>2013-12-19T20:45:12+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/10/08/accident-from-tmux/</loc>
+        <lastmod>2013-12-19T20:38:50+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/10/10/modify-tags-in-evernote/</loc>
+        <lastmod>2013-12-19T20:34:47+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/10/12/new-Date-Syntax/</loc>
+        <lastmod>2013-12-19T20:33:37+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/10/23/tx-te-gong-1/</loc>
+        <lastmod>2013-12-19T20:31:51+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/11/26/CSS-Position/</loc>
+        <lastmod>2013-12-19T21:00:55+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/11/26/two-pictures-with-Inkscape/</loc>
+        <lastmod>2013-12-19T21:12:24+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://shatle.github.com/blog/2013/12/19/modified-greyshade-theme-to-my-pages/</loc>
         <lastmod>2013-12-19T14:38:32+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/12/21/ngrepeat-with-ngmodel-in-radiobtn/</loc>
+        <lastmod>2013-12-21T23:07:52+08:00</lastmod>
     </url>
     <url>
         <loc>http://shatle.github.com/blog/categories/</loc>
@@ -82,10 +172,10 @@
     </url>
     <url>
         <loc>http://shatle.github.com/blog/archives/</loc>
-        <lastmod>2013-12-19T14:38:32+08:00</lastmod>
+        <lastmod>2013-12-21T23:07:52+08:00</lastmod>
     </url>
     <url>
         <loc>http://shatle.github.com/</loc>
-        <lastmod>2013-12-19T14:38:32+08:00</lastmod>
+        <lastmod>2013-12-21T23:07:52+08:00</lastmod>
     </url>
 </urlset>
