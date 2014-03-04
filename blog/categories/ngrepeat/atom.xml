@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ngRepeat | Liu.Shatle]]></title>
   <link href="http://shatle.github.com/blog/categories/ngrepeat/atom.xml" rel="self"/>
   <link href="http://shatle.github.com/"/>
-  <updated>2013-12-21T23:15:57+08:00</updated>
+  <updated>2014-03-04T09:29:57+08:00</updated>
   <id>http://shatle.github.com/</id>
   <author>
     <name><![CDATA[liu.shatle &hearts; gmail.com]]></name>
@@ -22,14 +22,14 @@
 
 <p><code>haml
 %li(ng-repeat="item in items")
-  %span {{item}}
+  %span 
 </code></p>
 
 <p>那么，当<code>ng-repeat</code>和<code>ng-model</code>结合起来呢：</p>
 
 <p>```haml
 %li(ng-repeat="item in items")
-  %input(type="radio" ng-model="select_item" value="{{item}}")</p>
+  %input(type="radio" ng-model="select_item" value="")</p>
 
 <p>%input(type="text" value="select_item")
 ```
@@ -41,7 +41,7 @@
 
 <p>```haml
 %li(ng-repeat="item in items")
-  %input(type="radio" ng-model="$parent.select_item" name="item" value="{{item}}")</p>
+  %input(type="radio" ng-model="$parent.select_item" name="item" value="")</p>
 
 <p>%input(type="text" value="select_item")
 ```</p>

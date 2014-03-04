@@ -4,7 +4,7 @@
   <title><![CDATA[Liu.Shatle]]></title>
   <link href="http://shatle.github.com/atom.xml" rel="self"/>
   <link href="http://shatle.github.com/"/>
-  <updated>2013-12-21T23:15:51+08:00</updated>
+  <updated>2014-03-04T09:29:57+08:00</updated>
   <id>http://shatle.github.com/</id>
   <author>
     <name><![CDATA[liu.shatle &hearts; gmail.com]]></name>
@@ -12,6 +12,182 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[create web icons]]></title>
+    <link href="http://shatle.github.com/blog/2014/03/04/create-web-icons/"/>
+    <updated>2014-03-04T09:01:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2014/03/04/create-web-icons</id>
+    <content type="html"><![CDATA[<p>不得不说，网络型图标给予我们很多方便。其中，提供的图标可以利用css修改样式，而不是如png图片那样。</p>
+
+<p>其中，bootstrap就为我们提供了不少的图标，但是我们有时刚不得不自定义些图标。那么，如何创建此类图标呢，下面是我的制作过程。</p>
+
+<h3>一、创建SVG图标文件</h3>
+
+<p>相信，此应该难不倒多数的设计师。对于设计，我是菜菜，由于我使用ubuntu的原因，我使用的是inkscape。</p>
+
+<p>我的设计过程，也挺简单的。利用已有的图标，并在其基础上做出修改。</p>
+
+<h3>二、上传到Web App的网站</h3>
+
+<p>这类Web Font 网站提供了，很方便的工具，如 Fontello 、 IcoMoon 、Flaticon 。我使用的是Fontello。</p>
+
+<p>将设计好的图标直接拖拉上页面，即可。</p>
+
+<p>当出现“非单一路径”的问题时，需要重新修改一下图标。我就出现此情况，解决方法：</p>
+
+<ol>
+<li>拆分组合（如果有的话），保证单独的个体</li>
+<li>再对各个单独的个体做转化（对象转为路径、轮廓转为路径）</li>
+<li>使用「粘贴」「合并」，将多个路径合并了一个</li>
+<li>保存</li>
+</ol>
+
+
+<p>然后选择所有上传的图标，注意页面显示的图标与你设计的是否一样，没问题后，点击下载。</p>
+
+<h3>三、添加进程序</h3>
+
+<p>参考 fontello.css 的路径，将 font 文件夹放到合适的地方。不考虑ie的话，可以只需要直接使用fontello-embeded.css文件。</p>
+
+<p>最后，就可以如用 fontawsome 一样使用图标了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[clone an object in jQuery]]></title>
+    <link href="http://shatle.github.com/blog/2013/12/31/clone-an-object-in-jquery/"/>
+    <updated>2013-12-31T11:15:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2013/12/31/clone-an-object-in-jquery</id>
+    <content type="html"><![CDATA[<p>大许多的编辑语言中，数组和对象通常为了节省内存，调用时，其内部机制会使用引用，而不是另外建立数组或者对象。JS也有这一问题，但实际操作中，有时我们真正想要的真正的复制对象（深度复制）。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;lisi&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">22</span><span class="p">};</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">newObj</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;zhangsan&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>  <span class="err">#</span> <span class="nx">zhangsan</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>利用jQuery复制整个对象，<a href="http://stackoverflow.com/questions/122102/most-efficient-way-to-clone-an-object">stackoverflow</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;lisi&#39;</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="mi">22</span><span class="p">};</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">newObj1</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="p">{},</span> <span class="nx">obj</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">newObj1</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">&#39;zhangsan&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>  <span class="err">#</span> <span class="nx">lisi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在这个例子中，其实用</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">newObj2</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">obj</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>也是可以的。但是，对于多层属性时，需要参数<code>true</code>。</p>
+
+<blockquote><p>However, by passing true for the first function argument, objects will be recursively merged.</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[show and hide element in angularjs]]></title>
+    <link href="http://shatle.github.com/blog/2013/12/30/show-and-hide-element-in-angularjs/"/>
+    <updated>2013-12-30T11:35:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2013/12/30/show-and-hide-element-in-angularjs</id>
+    <content type="html"><![CDATA[<p>由于是开始接触angularjs，所以很多效果都是用jquery/js的思维去做的，但是angularjs是不提倡直接操作dom元素的。这一直很让我纠结，慢慢去修正吧。</p>
+
+<p>相信，显示与隐藏是十分常见的功能／效果。刚开始，我是用jquery去实现，</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.ele&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">mouseenter</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.text&#39;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">})</span>
+</span><span class='line'>  <span class="p">.</span><span class="nx">mouseleave</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.text&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>但是这就直接操作dom了，怎么避免这些不好的操作呢，就要使用angular提供的或者自己编写的directives。</p>
+
+<p>从<a href="http://docs.angularjs.org/api/ng.directive">官网</a>页面中可以找到相关的directives：<code>ngHide</code>、<code>ngShow</code>、<code>ngMouseenter</code>、<code>ngMouseleave</code>。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='haml'><span class='line'><span class="nt">%a</span>( <span class="na">ng-repeat=</span><span class="s">&quot;item in items&quot;</span>
+</span><span class='line'>    <span class="na">ng-mouseenter=</span><span class="s">&quot;hover(item)&quot;</span>
+</span><span class='line'>    <span class="na">ng-mouseleave=</span><span class="s">&quot;hover(item)&quot;</span>
+</span><span class='line'>  )
+</span><span class='line'>  <span class="nt">%img</span>(<span class="na">ng-src=</span><span class="s">&quot;...&quot;</span>)
+</span><span class='line'>  <span class="nc">.text</span>(<span class="na">ng-show=</span><span class="s">&quot;item.show&quot;</span>)
+</span><span class='line'>    <span class="nt">%span</span> item.name
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;indexCtrl&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">){</span>
+</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;..&#39;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="p">,{</span>
+</span><span class='line'>      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;....&#39;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">$scope</span><span class="p">.</span><span class="nx">hover</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">item</span><span class="p">.</span><span class="nx">show</span> <span class="o">=</span> <span class="o">!</span><span class="nx">item</span><span class="p">.</span><span class="nx">show</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}]);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>效果是，默认的文字名称是隐藏的，因为开始时<code>item.show</code>是没有设置的，为false。
+当鼠标移进移出时，会触发<code>hover</code>方法 ，修改相应<code>item.show</code>的值。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[ngRepeat with ngModel in RadioBtn]]></title>
@@ -1329,317 +1505,6 @@ so a clear interface can be followed, my personal belief.</p></blockquote>
 
 
 <p><img src="http://shatle.github.com/images/photo/2013-08-17_10_10_58%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="2013-08-17 10:10:58的屏幕截图.png" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux Commands]]></title>
-    <link href="http://shatle.github.com/blog/2013/08/07/Linux-Commands/"/>
-    <updated>2013-08-07T14:18:00+08:00</updated>
-    <id>http://shatle.github.com/blog/2013/08/07/Linux-Commands</id>
-    <content type="html"><![CDATA[<p>用来记录各种 linux 下的有用命令！</p>
-
-<h4>top</h4>
-
-<p>动态查看机器的CPU、内存及各数据的变化。</p>
-
-<h4>netlogs</h4>
-
-<p><em>安装</em></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install netlogs</span></code></pre></td></tr></table></div></figure>
-
-
-<p><em>使用命令</em></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo netlogs wlan0</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>wlan0</code>是我无线的名称。使用网口的可能是<code>eth0</code>，但不一定。</p>
-
-<p>对于到底是哪个呢，可使用命令<code>ip addr</code>，看到正在使用的网络名称，并替代<code>wlan0</code>。</p>
-
-<h4>pushd, popd</h4>
-
-<p>最近发现个有趣而有用的命令，<code>pushd .</code>把当前的目录放入栈中，然后通过<code>popd</code>命令回到此目录。</p>
-
-<p>显示，对于经常访问并且地址很长的路径，是很有用的。否则，每次都要<code>cd</code>多累啊！</p>
-
-<p>其实这个也很累，哈哈！</p>
-
-<h4>apt-get</h4>
-
-<p><code>apt-cache policy PACKAGE_NAME</code> 下载安装之前查看安装包，有哪些版本</p>
-
-<p><code>apt-cache showpkg PACKAGE_NAME</code> 显示的内容更为详细些</p>
-
-<p>列出版本之后，需要指定安装版本：<code>sudo apt-get install PACKAGE_NAME=version</code> version指定完整版本名称</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[sublime ppa]]></title>
-    <link href="http://shatle.github.com/blog/2013/07/21/sublime-ppa/"/>
-    <updated>2013-07-21T14:18:00+08:00</updated>
-    <id>http://shatle.github.com/blog/2013/07/21/sublime-ppa</id>
-    <content type="html"><![CDATA[<p>最近出现状况：之前下载的submlime提示更新，重新下载后，又没多久又要更新。于是，有了用ppa的想法，但是ubuntu官方并没有提供ppa，不过网上有第三方提供的ppa。</p>
-
-<p>这第三方为：webupd8</p>
-
-<h3>Install</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo add-apt-repository ppa:webupd8team/sublime-text-2 
-</span><span class='line'>sudo apt-get update
-</span><span class='line'>sudo apt-get install sublime-text</span></code></pre></td></tr></table></div></figure>
-
-
-<p>当前，你还可以安装开发版本：sublime-text-dev</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Use Carrierwave to crop image with MiniMagick]]></title>
-    <link href="http://shatle.github.com/blog/2013/07/16/Use-Carrierwave-to-crop-image-with-MiniMagick/"/>
-    <updated>2013-07-16T14:18:00+08:00</updated>
-    <id>http://shatle.github.com/blog/2013/07/16/Use-Carrierwave-to-crop-image-with-MiniMagick</id>
-    <content type="html"><![CDATA[<p>做Web应用，常常要涉及到文件的上传，图片的上传就是其中之一。在Rails中，上传文件经常用到的是Carrierwave。</p>
-
-<h3><a href="https://github.com/carrierwaveuploader/carrierwave">Carrierwave</a></h3>
-
-<h4><a href="https://github.com/carrierwaveuploader/carrierwave#getting-started">创建方法</a></h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rails g uploader avatar</span></code></pre></td></tr></table></div></figure>
-
-
-<p>之后会产生，文件<code>app/uploaders/avatar_uploader.rb</code>:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class AvatarUploader &lt; CarrierWave::Uploader::Base
-</span><span class='line'>  storage :file
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>使用</h4>
-
-<p>1.直接使用：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>uploader = AvatarUploader.new
-</span><span class='line'>uploader.store!(my_file)
-</span><span class='line'>uploader.retrieve_from_store!('my_file.png')</span></code></pre></td></tr></table></div></figure>
-
-
-<p>2.运用于 model 中:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class User &lt; ActiveRecord::Base
-</span><span class='line'>  mount_uploader :avatar, AvatarUploader
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这样有个好处，可以利用 model 传入各种操作参数，如：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def crop
-</span><span class='line'>  if model.crop_x.present?
-</span><span class='line'>    resize_to_limit(700, 700)
-</span><span class='line'>
-</span><span class='line'>    manipulate! do |img|
-</span><span class='line'>      x = model.crop_x
-</span><span class='line'>      y = model.crop_y
-</span><span class='line'>      w = model.crop_w
-</span><span class='line'>      h = model.crop_h
-</span><span class='line'>
-</span><span class='line'>      size = w &lt;&lt; 'x' &lt;&lt; h
-</span><span class='line'>      offset = '+' &lt;&lt; x &lt;&lt; '+' &lt;&lt; y
-</span><span class='line'>
-</span><span class='line'>      img.crop("#{size}#{offset}") # Doesn't return an image...
-</span><span class='line'>      img # ...so you'll neet to call it yourself
-</span><span class='line'>    end
-</span><span class='line'>  end
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-<p>可能会遇到这种情况：想传入参数，但是并不要 ActiveRecord、MongoMapper、MongoId 等等 ORM 的中间件，那么可以这样子：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class Avatar
-</span><span class='line'>  extend CarrierWave::Mount
-</span><span class='line'>
-</span><span class='line'>  attr_accessor :crop_w, :crop_h, :crop_x, :crop_y
-</span><span class='line'>  mount_uploader :image, AvatarUploader
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>CarrierWave::Mount</code>之中包含了<code>mount_uploader</code>方法的定义。</p>
-
-<h3><a href="http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/RMagick.html">RMagick</a> vs <a href="http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/MiniMagick.html">MiniMagick</a></h3>
-
-<blockquote><p>http://stackoverflow.com/questions/8418973/undefined-method-crop-using-carrierwave-with-minimagick-on-rails-3-1-3#answer-9961434</p></blockquote>
-
-<p>RMagick 和 MiniMagick 是不一样的，MiniMagick 较 RMagick 更为轻量级。RMagick 根据 Ruby 的语法规则定义了许多操作图片的方法，如：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rmagick_image.crop(x_offset, y_offset, width, height) # Returns an image object
-</span><span class='line'>rmagick_image.crop!(x_offset, y_offset, width, height) # Edits object in place</span></code></pre></td></tr></table></div></figure>
-
-
-<p>而 MiniMagick 运用了元编程的方法，动态的创建请求的方法（创建的<a href="https://github.com/minimagick/minimagick/blob/c12decb8bf45383a3b1ea602c320ff79f49d2b79/lib/mini_magick.rb#L456">规则</a>）。方法直接访问 <a href="http://www.imagemagick.org/www/mogrify.html">mogrify</a>，并不会返回图片本身对象：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>minimagick_image.crop('100x200') # Translates to `mogrify -crop 100x200 image.ext`
-</span><span class='line'>minimagick_image.polaroid('12')  # Executes `mogrify -polaroid 12 image.ext`</span></code></pre></td></tr></table></div></figure>
-
-
-<p>所以 MiniMagick 中没有 Ruby 语法式的 crop! 方法。</p>
-
-<h3>MiniMagick</h3>
-
-<h4>crop</h4>
-
-<p>要裁剪图片，不得不谈到 crop 方法。使用的方法</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># 'w' means width 宽
-</span><span class='line'># 'h' means height 高
-</span><span class='line'># 'x' means x-offset x轴偏移量
-</span><span class='line'># 'y' means y-offset y轴偏移量
-</span><span class='line'>image.crop("wxh+x+y")</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>resize</h4>
-
-<p>参照 <a href="http://www.imagemagick.org/Usage/resize/#noaspect">imagemagick</a></p>
-
-<p>在 MiniMagick 使用中，前面四种方法对应有</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>resize("64x64!") # 固定大小，64x64
-</span><span class='line'>resize("64x64&gt;") # 使大图像变小，小的不变；调整后，宽和高都不能大于64
-</span><span class='line'>resize("64x64&lt;") # 使小图像变大，大的不变；调整后，宽和高都不小于64
-</span><span class='line'>resize("64x64^") # 使最小的宽或高变为64，另外一个按比例放大或者缩小</span></code></pre></td></tr></table></div></figure>
-
-
-<p>这四种方法对照链接中的图片，理解会更加容易些。</p>
-
-<p>在　process 中不能直接使用　resize 方法：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>process resize: "300x300^" # 这会找不到resize方法</span></code></pre></td></tr></table></div></figure>
-
-
-<p>有一场景：在页面中，将上传的图片以300x300显示来预览，即缩放后的图片最大的边变成300。并且，进行特定格式的截图，如　100x100，代码有：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>version :thumb do 
-</span><span class='line'>  process :lazy_resize_300
-</span><span class='line'>  process :cropper
-</span><span class='line'>  process :force_resize_100x100!
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>def lazy_resize_300
-</span><span class='line'>  manipulate! do |img| 
-</span><span class='line'>    img.resize "300x300^" if img[:width].to_i &lt; 300 && img[:height].to_i &lt; 300
-</span><span class='line'>    img.resize "300x300&gt;"
-</span><span class='line'>    img
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>def force_resize_100x100!
-</span><span class='line'>  manipulate! do |img| 
-</span><span class='line'>    img.resize "100x100!"
-</span><span class='line'>    img
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>def cropper
-</span><span class='line'>  manipulate! do |img|      
-</span><span class='line'>    x = model.crop_x
-</span><span class='line'>    y = model.crop_y
-</span><span class='line'>    w = model.crop_w
-</span><span class='line'>    h = model.crop_h
-</span><span class='line'>    size = w &lt;&lt; 'x' &lt;&lt; h
-</span><span class='line'>    offset = '+' &lt;&lt; x &lt;&lt; '+' &lt;&lt; y
-</span><span class='line'>    img.crop("#{size}#{offset}") # Doesn't return an image...
-</span><span class='line'>    img # ...so you'll neet to call it yourself
-</span><span class='line'>  end 
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

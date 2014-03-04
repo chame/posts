@@ -77,6 +77,10 @@
         <lastmod>2013-12-19T21:27:30+08:00</lastmod>
     </url>
     <url>
+        <loc>http://shatle.github.com/blog/2013/05/04/rails-pjax-in-diff-partial/</loc>
+        <lastmod>2014-03-04T09:16:43+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://shatle.github.com/blog/2013/05/06/cancel-assets-logs/</loc>
         <lastmod>2013-12-19T21:05:09+08:00</lastmod>
     </url>
@@ -167,15 +171,27 @@
         <lastmod>2013-12-21T23:07:52+08:00</lastmod>
     </url>
     <url>
+        <loc>http://shatle.github.com/blog/2013/12/30/show-and-hide-element-in-angularjs/</loc>
+        <lastmod>2013-12-30T12:02:55+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2013/12/31/clone-an-object-in-jquery/</loc>
+        <lastmod>2013-12-31T11:27:43+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://shatle.github.com/blog/2014/03/04/create-web-icons/</loc>
+        <lastmod>2014-03-04T09:08:53+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://shatle.github.com/blog/categories/</loc>
         <lastmod>2013-12-19T13:08:28+08:00</lastmod>
     </url>
     <url>
         <loc>http://shatle.github.com/blog/archives/</loc>
-        <lastmod>2013-12-21T23:07:52+08:00</lastmod>
+        <lastmod>2014-03-04T09:16:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://shatle.github.com/</loc>
-        <lastmod>2013-12-21T23:07:52+08:00</lastmod>
+        <lastmod>2014-03-04T09:16:43+08:00</lastmod>
     </url>
 </urlset>

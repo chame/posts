@@ -9,7 +9,9 @@
   <meta name="author" content="liu.shatle &hearts; gmail.com">
 
   
-  <meta name="description" content="在完成 rails 应用的功能之后，要考虑优化（重构）！ 关于 rails 的 cache 问题，网络上已经有很多说法了，我主要参考以下： http://guides.rubyonrails.org/caching_with_rails.html http://hawkins.io/2011/05 &hellip;">
+  <meta name="description" content="用来记录各种 linux 下的有用命令！ top 动态查看机器的CPU、内存及各数据的变化。 netlogs 安装 1
+sudo apt-get install netlogs 使用命令 1
+sudo netlogs wlan0 wlan0是我无线的名称。使用网口的可能是eth0，但不一定。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +87,398 @@
       <div class="mid-col-container">
         <div id="content" class="inner">
 <div>
+
+
+    <article class="post">
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/08/07/Linux-Commands/">Linux Commands</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-07T14:18:00+08:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>用来记录各种 linux 下的有用命令！</p>
+
+<h4>top</h4>
+
+<p>动态查看机器的CPU、内存及各数据的变化。</p>
+
+<h4>netlogs</h4>
+
+<p><em>安装</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt-get install netlogs</span></code></pre></td></tr></table></div></figure>
+
+
+<p><em>使用命令</em></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo netlogs wlan0</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>wlan0</code>是我无线的名称。使用网口的可能是<code>eth0</code>，但不一定。</p>
+
+<p>对于到底是哪个呢，可使用命令<code>ip addr</code>，看到正在使用的网络名称，并替代<code>wlan0</code>。</p>
+
+<h4>pushd, popd</h4>
+
+<p>最近发现个有趣而有用的命令，<code>pushd .</code>把当前的目录放入栈中，然后通过<code>popd</code>命令回到此目录。</p>
+
+<p>显示，对于经常访问并且地址很长的路径，是很有用的。否则，每次都要<code>cd</code>多累啊！</p>
+
+<p>其实这个也很累，哈哈！</p>
+
+<h4>apt-get</h4>
+
+<p><code>apt-cache policy PACKAGE_NAME</code> 下载安装之前查看安装包，有哪些版本</p>
+
+<p><code>apt-cache showpkg PACKAGE_NAME</code> 显示的内容更为详细些</p>
+
+<p>列出版本之后，需要指定安装版本：<code>sudo apt-get install PACKAGE_NAME=version</code> version指定完整版本名称</p>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/07/21/sublime-ppa/">Sublime Ppa</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-21T14:18:00+08:00" pubdate data-updated="true">Jul 21<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近出现状况：之前下载的submlime提示更新，重新下载后，又没多久又要更新。于是，有了用ppa的想法，但是ubuntu官方并没有提供ppa，不过网上有第三方提供的ppa。</p>
+
+<p>这第三方为：webupd8</p>
+
+<h3>Install</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo add-apt-repository ppa:webupd8team/sublime-text-2 
+</span><span class='line'>sudo apt-get update
+</span><span class='line'>sudo apt-get install sublime-text</span></code></pre></td></tr></table></div></figure>
+
+
+<p>当前，你还可以安装开发版本：sublime-text-dev</p>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/07/16/Use-Carrierwave-to-crop-image-with-MiniMagick/">Use Carrierwave to Crop Image With MiniMagick</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-16T14:18:00+08:00" pubdate data-updated="true">Jul 16<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>做Web应用，常常要涉及到文件的上传，图片的上传就是其中之一。在Rails中，上传文件经常用到的是Carrierwave。</p>
+
+<h3><a href="https://github.com/carrierwaveuploader/carrierwave">Carrierwave</a></h3>
+
+<h4><a href="https://github.com/carrierwaveuploader/carrierwave#getting-started">创建方法</a></h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rails g uploader avatar</span></code></pre></td></tr></table></div></figure>
+
+
+<p>之后会产生，文件<code>app/uploaders/avatar_uploader.rb</code>:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class AvatarUploader &lt; CarrierWave::Uploader::Base
+</span><span class='line'>  storage :file
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>使用</h4>
+
+<p>1.直接使用：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>uploader = AvatarUploader.new
+</span><span class='line'>uploader.store!(my_file)
+</span><span class='line'>uploader.retrieve_from_store!('my_file.png')</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.运用于 model 中:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class User &lt; ActiveRecord::Base
+</span><span class='line'>  mount_uploader :avatar, AvatarUploader
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样有个好处，可以利用 model 传入各种操作参数，如：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>def crop
+</span><span class='line'>  if model.crop_x.present?
+</span><span class='line'>    resize_to_limit(700, 700)
+</span><span class='line'>
+</span><span class='line'>    manipulate! do |img|
+</span><span class='line'>      x = model.crop_x
+</span><span class='line'>      y = model.crop_y
+</span><span class='line'>      w = model.crop_w
+</span><span class='line'>      h = model.crop_h
+</span><span class='line'>
+</span><span class='line'>      size = w &lt;&lt; 'x' &lt;&lt; h
+</span><span class='line'>      offset = '+' &lt;&lt; x &lt;&lt; '+' &lt;&lt; y
+</span><span class='line'>
+</span><span class='line'>      img.crop("#{size}#{offset}") # Doesn't return an image...
+</span><span class='line'>      img # ...so you'll neet to call it yourself
+</span><span class='line'>    end
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可能会遇到这种情况：想传入参数，但是并不要 ActiveRecord、MongoMapper、MongoId 等等 ORM 的中间件，那么可以这样子：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Avatar
+</span><span class='line'>  extend CarrierWave::Mount
+</span><span class='line'>
+</span><span class='line'>  attr_accessor :crop_w, :crop_h, :crop_x, :crop_y
+</span><span class='line'>  mount_uploader :image, AvatarUploader
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>CarrierWave::Mount</code>之中包含了<code>mount_uploader</code>方法的定义。</p>
+
+<h3><a href="http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/RMagick.html">RMagick</a> vs <a href="http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/MiniMagick.html">MiniMagick</a></h3>
+
+<blockquote><p>http://stackoverflow.com/questions/8418973/undefined-method-crop-using-carrierwave-with-minimagick-on-rails-3-1-3#answer-9961434</p></blockquote>
+
+<p>RMagick 和 MiniMagick 是不一样的，MiniMagick 较 RMagick 更为轻量级。RMagick 根据 Ruby 的语法规则定义了许多操作图片的方法，如：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rmagick_image.crop(x_offset, y_offset, width, height) # Returns an image object
+</span><span class='line'>rmagick_image.crop!(x_offset, y_offset, width, height) # Edits object in place</span></code></pre></td></tr></table></div></figure>
+
+
+<p>而 MiniMagick 运用了元编程的方法，动态的创建请求的方法（创建的<a href="https://github.com/minimagick/minimagick/blob/c12decb8bf45383a3b1ea602c320ff79f49d2b79/lib/mini_magick.rb#L456">规则</a>）。方法直接访问 <a href="http://www.imagemagick.org/www/mogrify.html">mogrify</a>，并不会返回图片本身对象：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>minimagick_image.crop('100x200') # Translates to `mogrify -crop 100x200 image.ext`
+</span><span class='line'>minimagick_image.polaroid('12')  # Executes `mogrify -polaroid 12 image.ext`</span></code></pre></td></tr></table></div></figure>
+
+
+<p>所以 MiniMagick 中没有 Ruby 语法式的 crop! 方法。</p>
+
+<h3>MiniMagick</h3>
+
+<h4>crop</h4>
+
+<p>要裁剪图片，不得不谈到 crop 方法。使用的方法</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># 'w' means width 宽
+</span><span class='line'># 'h' means height 高
+</span><span class='line'># 'x' means x-offset x轴偏移量
+</span><span class='line'># 'y' means y-offset y轴偏移量
+</span><span class='line'>image.crop("wxh+x+y")</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>resize</h4>
+
+<p>参照 <a href="http://www.imagemagick.org/Usage/resize/#noaspect">imagemagick</a></p>
+
+<p>在 MiniMagick 使用中，前面四种方法对应有</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>resize("64x64!") # 固定大小，64x64
+</span><span class='line'>resize("64x64&gt;") # 使大图像变小，小的不变；调整后，宽和高都不能大于64
+</span><span class='line'>resize("64x64&lt;") # 使小图像变大，大的不变；调整后，宽和高都不小于64
+</span><span class='line'>resize("64x64^") # 使最小的宽或高变为64，另外一个按比例放大或者缩小</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这四种方法对照链接中的图片，理解会更加容易些。</p>
+
+<p>在　process 中不能直接使用　resize 方法：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>process resize: "300x300^" # 这会找不到resize方法</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有一场景：在页面中，将上传的图片以300x300显示来预览，即缩放后的图片最大的边变成300。并且，进行特定格式的截图，如　100x100，代码有：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>version :thumb do 
+</span><span class='line'>  process :lazy_resize_300
+</span><span class='line'>  process :cropper
+</span><span class='line'>  process :force_resize_100x100!
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>def lazy_resize_300
+</span><span class='line'>  manipulate! do |img| 
+</span><span class='line'>    img.resize "300x300^" if img[:width].to_i &lt; 300 && img[:height].to_i &lt; 300
+</span><span class='line'>    img.resize "300x300&gt;"
+</span><span class='line'>    img
+</span><span class='line'>  end
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>def force_resize_100x100!
+</span><span class='line'>  manipulate! do |img| 
+</span><span class='line'>    img.resize "100x100!"
+</span><span class='line'>    img
+</span><span class='line'>  end
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>def cropper
+</span><span class='line'>  manipulate! do |img|      
+</span><span class='line'>    x = model.crop_x
+</span><span class='line'>    y = model.crop_y
+</span><span class='line'>    w = model.crop_w
+</span><span class='line'>    h = model.crop_h
+</span><span class='line'>    size = w &lt;&lt; 'x' &lt;&lt; h
+</span><span class='line'>    offset = '+' &lt;&lt; x &lt;&lt; '+' &lt;&lt; y
+</span><span class='line'>    img.crop("#{size}#{offset}") # Doesn't return an image...
+</span><span class='line'>    img # ...so you'll neet to call it yourself
+</span><span class='line'>  end 
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+</article>
 
 
     <article class="post">
@@ -315,6 +709,187 @@
 <p>但是，在我这版本 3.2.8 是不行的。
 于是找到了<a href="https://github.com/evrone/quiet_assets">quiet_assets</a>。
 在 Gemfile 中加入 <code>gem quiet_assets</code>, 然后 <code>bundle install</code>, <code>nginx -s reload</code> 即可！</p>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/05/04/rails-pjax-in-diff-partial/">Rails Pjax in Diff Partial</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-04T09:13:00+08:00" pubdate data-updated="true">May 4<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How to use pjax refresh pages on rails?</p>
+
+<h2>Useage</h2>
+
+<blockquote><p>https://github.com/defunkt/jquery-pjax</p></blockquote>
+
+<p>It&#8217;s a tool to refresh page through ajax on rails.
+You can see README from <a href="https://github.com/defunkt/jquery-pjax">jquery-pjax</a>.</p>
+
+<p><strong>gem</strong>
+v =0.3.4</p>
+
+<p>In <code>Gemfile</code></p>
+
+<pre><code>gem 'pjax_rails'
+</code></pre>
+
+<p>In <code>application.js</code></p>
+
+<pre><code>//= require pjax
+</code></pre>
+
+<p><strong>Example one</strong></p>
+
+<p>Add to <code>application.js</code></p>
+
+<pre><code>$(document).pjax('a', '#pjax-container')
+</code></pre>
+
+<p>Then, when you click a <code>a</code> link, your page partion which id is <code>pjax-container</code> will be replaced through AJAX.</p>
+
+<p>Mostly, it&#8217;s used in pagination.</p>
+
+<p>On rails, we can increase data compution from changing action code. <code>index</code> action, use kaminari to page:</p>
+
+<pre><code>def index
+    @posts=Post.all.page(page)
+    respond_to do |format|
+    format.html {(render :layout =&gt; false if request.headers['X-PJAX'])}
+  format.json { render :json =&gt; @buildings }
+end
+end
+</code></pre>
+
+<p>In <code>index.haml</code></p>
+
+<pre><code>#pjax-container
+    @posts.each ...
+
+    = pagination @posts
+</code></pre>
+
+<p>When click <code>a</code> tag, it will show a params[:_pjax] which equals <code>#pjax-container</code> in console of backend.
+Frontend, <code>#pjax-container</code> partion is replaced, and other partions do not.</p>
+
+<p>In this, <em>warning</em>:</p>
+
+<p>when i use syntax: <a href="https://github.com/rails/pjax_rails">rails/pjax_rails</a></p>
+
+<pre><code>$('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])').pjax('[data-pjax-container]');
+</code></pre>
+
+<p>it happens lots of problems, especially use tag id and class attribute. So, dont use this.</p>
+
+<h2>Example Two</h2>
+
+<p>Sometimes, we want to diff link replace diff container.
+Likely,</p>
+
+<ul>
+<li>nav bar usually update <code>#main</code> partion</li>
+<li>login form update login status</li>
+<li>&#8230;</li>
+</ul>
+
+
+<p>This, in application.js</p>
+
+<pre><code>$(document).pjax('.pjax-1 a', '#pjax-container-1')
+$(document).pjax('.pjax-2 a', '#pjax-cantainer-2')
+</code></pre>
+
+<p>Then change relative views and actions. Ok.</p>
+
+<h2>Example Three:</h2>
+
+<p>On rails apps, we use <code>render</code> paritial function in mostly.
+In <code>show.haml</code>,</p>
+
+<pre><code>#pjax-container-1
+    #post-info
+        ...
+    #comments
+        = render 'comments', :@comments=&gt;@post.comments
+</code></pre>
+
+<p>in <code>_comments</code>,</p>
+
+<pre><code>@comments.each ...
+= pagination @comments
+</code></pre>
+
+<p>This case, we can see comments pagination in post <code>show</code> page. When we click pager and just want to refresh <code>#comments</code> partion.</p>
+
+<p>Maybe, we do:</p>
+
+<ul>
+<li>$(document).pjax(&#8216;.pagination a&#8217;, &#8216;#pjax-container-1&#8217;)</li>
+<li>$(document).pjax(&#8216;.pagination a&#8217;, &#8216;#comments&#8217;)</li>
+</ul>
+
+
+<p>First one, it will refresh comments info and post info.
+Second, it will refresh only comments info. Maybe, it&#8217;s better!</p>
+
+<p>However, what is the replaced from server? the <code>show</code> action in controller:</p>
+
+<pre><code>def index
+    @post=Post.find(params[:id])
+    respond_to do |format|
+        format.html {(render :layout =&gt; false if request.headers['X-PJAX'])}
+        format.json { render :json =&gt; @building }
+    end
+end
+</code></pre>
+
+<p>Then, the post info and comments info will be return from server to frontend.
+In this time, first one should be right!</p>
+
+<p>Can we use second one? And, we must control the return info from server. Then,
+change the view <code>show.haml</code> code</p>
+
+<pre><code>/#pjax-container-1
+unless request.headers['X-PJAX']
+    #post-info
+        ...
+#comments
+    = render 'comments', :@comments=&gt;@post.comments
+</code></pre>
+
+<p>if use pjax, only return comments info! Done!</p>
+
+<h2>End</h2>
+
+<p>Mostly, we also have some function when refresh page, like js functions.
+I will write something for that if i need!</p>
 </div>
   
   
@@ -648,261 +1223,6 @@ git commit -m "test_job ok"
 
 </article>
 
-
-    <article class="post">
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/17/ubuntu-one-ji-shi/">Ubuntu One记事</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-17T21:48:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>前段时间，我不小心从ubuntu one官网上删除了我自己机器上的，于是其只剩下公司电脑了。</p>
-
-<p>回到宿舍想重新添加时，一直不知道怎么办。</p>
-
-<p>有人说，可以从ubuntu one的客户端点击，出网页，会出现添加此设备的按钮，实际上我的没有。</p>
-
-<p>终于方法到了：</p>
-
-<ul>
-<li>删除本地的ubuntu one 帐号。</li>
-</ul>
-
-
-<p>打开&#8221;密码与密钥&#8221;程序，在&#8221;密码&#8221;中找到 ubuntu one 的行，右键删除。</p>
-
-<ul>
-<li><p>打开终端运行命令。</p>
-
-<pre><code>  u1sdtool -q
-
-  u1sdtool -c
-</code></pre></li>
-</ul>
-
-
-<p>重启同步进程。</p>
-
-<ul>
-<li>打开ubuntu one的客户端，输入帐号，就没问题。</li>
-</ul>
-
-</div>
-  
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/17/ps-yin-chu-de-%3Czhong-duan-%3Ezhi-shi-dian/">Ps引出的<终端>知识点</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-17T21:43:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>由于任务可能要涉及到，进程的管理，所以，又稍微看了ps命令，其中的很多标识都不知道它是什么意思。</p>
-
-<p>幸运的是，在查找ps相关信息的时候，我发现了一直未意识到的基础知识：</p>
-
-<p>&lt;终端></p>
-
-<p>于是我把这一相关信息copy下来，以后可能会重温一下。</p>
-
-<blockquote><p>http://forum.ubuntu.org.cn/viewtopic.php?f=50&amp;t=150603</p></blockquote>
-
-<p>终端是一种字符型设备，它有多种类型，通常使用tty来简称各种类型的终端设备。tty是Teletype的缩写。Teletype是最早出现的一种终端 设备，很象电传打字机（或者说就是），是由Teletype公司生产的。在Linux系统的设备特殊文件目录/dev/下，终端特殊设备文件一般有以下 几种：</p>
-
-<p>1.串行端口终端（/dev/ttySn）</p>
-
-<p>串行端口终端（Serial Port Terminal）是使用计算机串行端口连接的终端设备。计算机把每个串行端口都看作是一个字符设备。有段时间这些串行端口设备通常被称为终端设备，因为 那时它的最大用途就是用来连接终端。这些串行端口所对应的设备名称是/dev/tts/0（或/dev/ttyS0）、/dev/tts/1（或 /dev/ttyS1）等，设备号分别是（4,0）、（4,1）等，分别对应于DOS系统下的COM1、COM2等。若要向一个端口发送数据，可以在命令 行上把标准输出重定向到这些特殊文件名上即可。例如，在命令行提示符下键入：echo test > /dev/ttyS1会把单词”test”发送到连接在ttyS1（COM2）端口的设备上。可接串口来实验。</p>
-
-<p>2.伪终端（/dev/pty/）</p>
-
-<p>伪终端（Pseudo Terminal）是成对的逻辑终端设备，例如/dev/ptyp3和/dev/ttyp3（或着在设备文件系统中分别是/dev/pty/m3和 /dev/pty/s3）。它们与实际物理设备并不直接相关。如果一个程序把ttyp3看作是一个串行端口设备，则它对该端口的读/写操作会反映在该逻辑 终端设备对的另一个上面（ttyp3）。而ttyp3则是另一个程序用于读写操作的逻辑设备。这样，两个程序就可以通过这种逻辑设备进行互相交流，而其中 一个使用ttyp3的程序则认为自己正在与一个串行端口进行通信。这很象是逻辑设备对之间的管道操作。对于ttyp3（s3），任何设计成使用一个串行端 口设备的程序都可以使用该逻辑设备。但对于使用ptyp3的程序，则需要专门设计来使用ptyp3 （m3）逻辑设备。</p>
-
-<p>例如，如果某人在网上使用telnet程序连接到你的计算机上，则telnet程序就可能会开始连接到设备ptyp2（m2）上（一个伪终端 端口上）。此时一个getty程序就应该运行在对应的ttyp2（s2）端口上。当telnet从远端获取了一个字符时，该字符就会通过m2、s2传递给 getty程序，而getty程序就会通过s2、m2和telnet程序往网络上返回”login:”字符串信息。这样，登录程序与telnet程序就通 过“伪终端”进行通信。通过使用适当的软件，就可以把两个甚至多个伪终端设备连接到同一个物理串行端口上。</p>
-
-<p>在使用设备文件系统（device filesystem）之前，为了得到大量的伪终端设备特殊文件，使用了比较复杂的文件名命名方式。因为只存在16个ttyp（ttyp0—ttypf） 的设备文件，为了得到更多的逻辑设备对，就使用了象q、r、s等字符来代替p。例如，ttys8和ptys8就是一个伪终端设备对。不过这种命名方式目前 仍然在RedHat等Linux系统中使用着。 但Linux系统上的Unix98并不使用上述方法，而使用了”pty master”方式，例如/dev/ptm3。它的对应端则会被自动地创建成/dev/pts/3。这样就可以在需要时提供一个pty伪终端。目录 /dev/pts是一个类型为devpts的文件系统，并且可以在被加载文件系统列表中看到。虽然“文件”/dev/pts/3看上去是设备文件系统中的 一项，但其实它完全是一种不同的文件系统。</p>
-
-<p>即TELNET &#8211;TTYP3（S3：slave）&#8211;TTYP3（M3：master）&#8211;GETTY</p>
-
-<p>实验：1、在X下打开一个orN个N终端窗口
-2、#ls /dev pt*
-3、关闭这个X下的终端窗口，再次运行；比较两次输出信息就明白了。
-在RHEL4环境下：输出为 /dev/ptmx /dev/pts/1 存在一（master）对多（slave）的情况</p>
-
-<p>3.控制终端（/dev/tty）</p>
-
-<p>如果当前进程有控制终端（Controlling Terminal）的话，那么/dev/tty就是当前进程的控制终端的设备特殊文件。可以使用命令”ps –ax”来查看进程与哪个控制终端相连。对于你登录的shell，/dev/tty就是你使用的终端，设备号是（5,0）。使用命令”tty”可以查看它 具体对应哪个实际终端设备。/dev/tty有些类似于到实际所使用终端设备的一个联接。</p>
-
-<p>4.控制台终端（/dev/ttyn, /dev/console）</p>
-
-<p>在Linux系统中，计算机显示器通常被称为控制台终端（Console）。它仿真了类型为Linux的一种终端（TERM=Linux）， 并且有一些设备特殊文件与之相关联：tty0、tty1、tty2等。当你在控制台上登录时，使用的是tty1。使用Alt+[F1—F6]组合键时，我 们就可以切换到tty2、tty3等上面去。tty1 –tty6等称为虚拟终端，而tty0则是当前所使用虚拟终端的一个别名，系统所产生的信息会发送到该终端上。因此不管当前正在使用哪个虚拟终端，系统信 息都会发送到控制台终端上。你可以登录到不同的虚拟终端上去，因而可以让系统同时有几个不同的会话期存在。只有系统或超级用户root可以向/dev /tty0进行写操作 即下例：</p>
-
-<pre><code>#tty（查看当前TTY）
-/dev/tty1
-＃echo "test tty0" &gt; /dev/tty0
-test tty0
-</code></pre>
-
-<p>5.其它类型</p>
-
-<p>Linux系统中还针对很多不同的字符设备存在有很多其它种类的终端设备特殊文件。例如针对ISDN设备的/dev/ttyIn终端设备等。这里不再赘述。</p>
-</div>
-  
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/17/rails-lib-wen-jian/">Rails Lib 文件</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-17T21:42:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天在rails项目中的<code>rails_dir/lib</code>文件夹新建了个文件，当类库使用。</p>
-
-<p>如：my_jobs.rb，内容如下:</p>
-
-<pre><code>module Jobs
-  def self.hello
-    "hello"
-  end
-end
-</code></pre>
-
-<p>但是，当我用</p>
-
-<pre><code>rails c
-</code></pre>
-
-<p>并不能正常加载，不是说rails项目的lib中的文件会自动加载吗？问了旁边的齐洋，哦，要模块名与文件名要同名(符合rails规则)，才能自动加载。</p>
-
-<p>唉，之前都是习惯同名，现在不同名却能发现这一问题。多coding，才能发现问题啊。</p>
-</div>
-  
-  
-
-</article>
-
-
-    <article class="post">
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2012/08/17/warning-variable-is-no-longer-effective/">Warning: Variable Is No Longer Effective</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-17T21:40:00+08:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>gems/soap4r-1.5.8/lib/xsd/charset.rb:13: warning: variable $KCODE is no longer effective
-</code></pre>
-
-<p>在stackoverflow上找到了解决这一问题的方法：</p>
-
-<pre><code>http://stackoverflow.com/questions/5754965/ruby-soap4r-wsdl2ruby-rb-errors
-</code></pre>
-
-<p>即，修改文件：gems/soap4r-1.5.8/lib/xsd/xmlparser.rb的第66行，</p>
-
-<pre><code>c.downcase == name
-</code></pre>
-
-<p>为</p>
-
-<pre><code>c.to_s.downcase == name
-</code></pre>
-</div>
-  
-  
-
-</article>
-
 </div>
 <nav id="pagenavi">
     
@@ -915,7 +1235,7 @@ end
 </nav></div>
       </div>
       <footer id="footer" class="inner"><p>
-  Copyright &copy; 2013 - liu.shatle &hearts; gmail.com -
+  Copyright &copy; 2014 - liu.shatle &hearts; gmail.com -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
