@@ -1,0 +1,19 @@
+---
+layout: post
+title: "好看样式CSS"
+date: 2013-08-11 14:18
+comments: true
+categories: [css, html]
+---
+
+收集一些好看的样式
+
+### Input
+
+* 代码地址：http://codepen.io/anon/pen/jivxd ，其利用 css3 的特性展现多种动画
+
+![2013-08-11 09:14:50的屏幕截图.png](/images/photo/2013-08-11_09_14_50的屏幕截图.png)
+
+* http://dropthebit.com/demos/fancy_input/fancyInput.html ，这个也挺好的
+
+![2013-08-17 10:10:58的屏幕截图.png](/images/photo/2013-08-17_10_10_58的屏幕截图.png)

@@ -1,0 +1,72 @@
+---
+layout: post
+title: "Cron"
+date: 2013-09-09 14:18
+comments: true
+categories: [linux, cron]
+---
+
+利用系统自带的 cron，做定时任务，主要是备份数据
+
+### 查看当前任务
+
+```
+ps axgu | grep cron
+```
+
+### 编辑（添加／删除）任务
+
+```
+sudo crontab -e
+
+# 例子:
+#
+# 每天每分钟执行job1一次
+* * * * * /cron_jobs/job1 # Absolutely Path
+
+# 每个星期一，早上 3:00 执行一次
+0 3 * * 1 /cron_jobs/job2
+
+# Format:
+#
+#   分    小时     天           月               星期几          命令 
+# (0-59) (0-23) (1-31)  (1-12 or Jan-Dec) (0-6 or Sun-Sat)
+#   0      2      12           *                 0,6
+```
+
+### 保存数据库数据
+
+__方法一__:
+
+定义文件`/cron_jobs/bk_data`,
+
+```
+ #!/bin/bash
+DATE=`date +%y_%m_%d_%H_%M_%S`
+mongodump --out ./dump$DATE
+tar -cf ./dump$DATE.tar ./dump$DATE
+rm -rf dump$DATE
+```
+
+__方法二__: 进入项目数据库数据目录，
+
+定义文件`/cron_jobs/bk_data`,内容为
+
+```
+ #!/bin/bash
+cd /data_path
+DATE=`date +%y_%m_%d_%H_%M_%S`
+git init ./ 
+git add ./ -A 
+git commit -am "commit with cron in $DATE"
+```
+
+__其中__，方法一直接使用mongodb简单的整体备份方法，方法二则使用git进行差异化备份。无论方法一、方法二，还需要添加定时任务
+
+赋权限`chmod u+x /cron_jobs/bk_data`，通过`crontab -e`添加任务：
+
+```
+0 3 * * 1 /cron_jobs/bk_data
+```
+
+另外有: https://github.com/javan/whenever
