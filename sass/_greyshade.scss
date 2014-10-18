@@ -51,6 +51,9 @@ body {
 			li {
 				margin-left: 0px;
 				display: block;
+				font-size: 18px;
+				padding: 4px 0;
+
 				a {
 					padding: 0px 0px;
 				}
@@ -142,6 +145,7 @@ body {
 							color: #333;
 							margin-top: 30px;
 							font-weight: bold;
+							border-bottom: none;
 						}
 						h2::before {
 							border-bottom: none;
@@ -179,21 +183,19 @@ body {
 
 						>div {display: inline-block;}
 
-						.date::before {
-							color: #555;
-							font-size: 16px;
-							position: relative;
-							margin-right: 10px;
-						}
-						.tags {
-							padding-left: 0;
-						}
-						.tags::before {
+						.date::before, 
+						.tags::before, 
+						.comments:before {
 							color: #999;
 							font-size: 16px;
 							position: relative;
 							margin-right: 10px;
 						}
+						time {color: #999;}
+						.tags {
+							padding-left: 0;
+						}
+
 					}
 					h1.title{
 						border-bottom: 1px dashed #DDD;
@@ -274,6 +276,9 @@ body {
 				}
 				.social {
 					margin-bottom: 10px;
+					position: fixed;
+					bottom: 0;
+
 					a {
 						margin-right: 5px;
 					}
@@ -288,15 +293,34 @@ body {
 		font-size: 1.2em;
 	}
 	article {
+		
+
 		.meta {
 			line-height: 1.5em;
 			margin-top: 0;
+
 			span::before {
 				padding-right: 0;
 			}
 		}
 	}
 }
+
+// shatle
+.container .mid-col .mid-col-container #content {
+	.archives {
+		article {
+			padding: 30px 0;
+			margin-left: 100px;
+
+			h1.title {
+				border-bottom: none;
+				margin-top: 20px;
+			}
+		}
+	}
+}
+
 
 a {
 	color: $greyshade;
