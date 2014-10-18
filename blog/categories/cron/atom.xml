@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: cron | Liu.Shatle]]></title>
+  <link href="http://shatle.github.com/blog/categories/cron/atom.xml" rel="self"/>
+  <link href="http://shatle.github.com/"/>
+  <updated>2014-03-11T18:55:26+08:00</updated>
+  <id>http://shatle.github.com/</id>
+  <author>
+    <name><![CDATA[liu.shatle &hearts; gmail.com]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Cron]]></title>
+    <link href="http://shatle.github.com/blog/2013/09/09/Cron/"/>
+    <updated>2013-09-09T14:18:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2013/09/09/Cron</id>
+    <content type="html"><![CDATA[<p>利用系统自带的 cron，做定时任务，主要是备份数据</p>
+
+<h3>查看当前任务</h3>
+
+<p><code>
+ps axgu | grep cron
+</code></p>
+
+<h3>编辑（添加／删除）任务</h3>
+
+<p>```
+sudo crontab -e</p>
+
+<h1>例子:</h1>
+
+<p>#</p>
+
+<h1>每天每分钟执行job1一次</h1>
+
+<ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li>/cron_jobs/job1 # Absolutely Path</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<h1>每个星期一，早上 3:00 执行一次</h1>
+
+<p>0 3 * * 1 /cron_jobs/job2</p>
+
+<h1>Format:</h1>
+
+<p>#</p>
+
+<h1>分    小时     天           月               星期几          命令</h1>
+
+<h1>(0-59) (0-23) (1-31)  (1-12 or Jan-Dec) (0-6 or Sun-Sat)</h1>
+
+<h1>0      2      12           *                 0,6</h1>
+
+<p>```</p>
+
+<h3>保存数据库数据</h3>
+
+<p><strong>方法一</strong>:</p>
+
+<p>定义文件<code>/cron_jobs/bk_data</code>,</p>
+
+<p><code>
+ #!/bin/bash
+DATE=`date +%y_%m_%d_%H_%M_%S`
+mongodump --out ./dump$DATE
+tar -cf ./dump$DATE.tar ./dump$DATE
+rm -rf dump$DATE
+</code></p>
+
+<p><strong>方法二</strong>: 进入项目数据库数据目录，</p>
+
+<p>定义文件<code>/cron_jobs/bk_data</code>,内容为</p>
+
+<p><code>
+ #!/bin/bash
+cd /data_path
+DATE=`date +%y_%m_%d_%H_%M_%S`
+git init ./
+git add ./ -A
+git commit -am "commit with cron in $DATE"
+</code></p>
+
+<p><strong>其中</strong>，方法一直接使用mongodb简单的整体备份方法，方法二则使用git进行差异化备份。无论方法一、方法二，还需要添加定时任务</p>
+
+<p>赋权限<code>chmod u+x /cron_jobs/bk_data</code>，通过<code>crontab -e</code>添加任务：</p>
+
+<p><code>
+0 3 * * 1 /cron_jobs/bk_data
+</code></p>
+
+<p>另外有: https://github.com/javan/whenever</p>
+]]></content>
+  </entry>
+  
+</feed>

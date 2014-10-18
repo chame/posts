@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: date | Liu.Shatle]]></title>
+  <link href="http://shatle.github.com/blog/categories/date/atom.xml" rel="self"/>
+  <link href="http://shatle.github.com/"/>
+  <updated>2014-03-11T18:55:26+08:00</updated>
+  <id>http://shatle.github.com/</id>
+  <author>
+    <name><![CDATA[liu.shatle &hearts; gmail.com]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[new Date Syntax]]></title>
+    <link href="http://shatle.github.com/blog/2013/10/12/new-Date-Syntax/"/>
+    <updated>2013-10-12T14:18:00+08:00</updated>
+    <id>http://shatle.github.com/blog/2013/10/12/new-Date-Syntax</id>
+    <content type="html"><![CDATA[<p><img src="/images/photo/date2013.jpg" alt="date2013.jpg" /></p>
+
+<p>前两天笔试时，多选 Date 的语法，我经常用的有</p>
+
+<p><code>
+new Date(1999,10,10);
+new Date("1999-10-10");
+</code></p>
+
+<p>其它的不敢多选，回来查看了 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date ，基本语法有：</p>
+
+<p><code>
+new Date();
+new Date(value);
+new Date(dateString);
+new Date(year, month, day [, hour, minute, second, millisecond]);
+</code></p>
+
+<p>好吧，这个<code>dateString</code>很恼人啊，幸好链接了 http://tools.ietf.org/html/rfc2822#page-14 。</p>
+
+<p>下面形象地列出些<code>dateString</code>实例：</p>
+
+<p><code>
+new Date("1999-10-10");
+new Date("1999/10/10");
+new Date("Oct* 10, 1999");
+new Date("October 10, 1999");
+new Date("1999-Oct-10");
+new Date("1999/Oct/10");
+</code></p>
+
+<p><code>#Date</code> <code>#js</code></p>
+
+<hr />
+]]></content>
+  </entry>
+  
+</feed>
