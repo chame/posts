@@ -1,0 +1,34 @@
+---
+layout: post
+title: "websocket 1"
+date: 2014-10-25 18:47:21 +0800
+comments: true
+categories: [websocket]
+---
+
+最近需要了解关于websocket 的知识，之前也了解过，但是只是大致的原理，只是看了个大概。
+
+了解websocket，最常见了并易上手的应用应该就是聊天室了，鉴于本人于对rails 比较了解，所以直接拿网上的应用进行了简单的部署。
+
+> https://github.com/moaa/websocket-rails-demo
+
+不过，网上很多的介绍都偏向于 nodejs 做后台，可能同源js吧。
+
+#### 一、基本
+
+websocket 的基本知识可参考
+
+> http://dev.w3.org/html5/websockets/
+
+这里只是提供其接口的内容，不同技术可能存在着不同的实现方式，需要注意的是：
+
+> The following are the event handlers (and their corresponding event handler event types) that must be supported, as event handler IDL attributes, by all objects implementing the WebSocket interface:
+> 
+> Event handler   |  Event handler event type 
+> onopen            |  open 
+> onmessage   |  message
+> onerror           |  error 
+> onclose           |  close
+
+这四个接口是需要实现的。
+
